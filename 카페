@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Handong Eats - 카페</title>
+  <style>
+     body {
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    /* 메인 상단 탭 버튼들 (# 식당, # 카페, # 매점) */
+    .main-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .main-tab {
+      padding: 12px 24px;
+      background-color: white;
+      color: #0074D9;
+      font-weight: 600;
+      border: 2px solid #0074D9;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .main-tab:hover {
+      background-color: #e6f0fa;
+    }
+
+    .main-tab.active {
+      background-color: #0074D9;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 116, 217, 0.2);
+    }
+
+    /* 카페 내부 탭 (애인트, 맘스카페 등) */
+    .tab-header {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-header button {
+      all: unset;
+      padding: 12px 24px;
+      background-color: white;
+      color: #0074D9;
+      font-weight: 600;
+      border: 2px solid #0074D9;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .tab-header button:hover {
+      background-color: #e6f0fa;
+    }
+
+    .tab-header button.active {
+      background-color: #0074D9;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 116, 217, 0.2);
+    }
+
+    /* 메뉴 카드 영역 */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 16px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: center;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .menu-card strong {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #cafe-info {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+ 
+
+
+  </style>
+</head>
+<body>
+    <div class="main-tabs">
+  <button class="main-tab active" onclick="showMainTab('restaurant-tab', this)"># 식당</button>
+  <button class="main-tab" onclick="showMainTab('cafe-tab', this)"># 카페</button>
+  <button class="main-tab" onclick="showMainTab('store-tab', this)"># 매점 · 편의점</button>
+</div>
+<div id="restaurant-tab" style="display:none;">
+  <h2># 식당</h2>
+  <!-- 식당 콘텐츠가 여기에 들어감 -->
+  <p>식당 메뉴 콘텐츠가 여기에 들어갑니다.</p>
+</div>
+ <div id="cafe-tab">
+    <div class="tab-header">
+    <div id="cafe-info" style="margin-bottom: 20px; font-weight: bold; line-height: 1.6;"></div>
+    <button class="active" onclick="loadCafe('애인트', this)">애플인더트리</button>
+    <button onclick="loadCafe('맘스카페', this)">맘스카페</button>
+    <button onclick="loadCafe('히즈빈스', this)">히즈빈스</button>
+    <button onclick="loadCafe('빽다방', this)">빽다방</button>
+    <button onclick="loadCafe('예소드', this)">예소드</button>
+  </div>
+
+  <div class="menu-grid" id="menu-container">
+    <!-- 메뉴 카드가 여기에 들어감 -->
+  </div>
+  </div>
+ 
+
+<div id="store-tab" style="display:none;">
+  <h2># 매점 · 편의점</h2>
+  <!--편의점.메뉴 콘텐츠 여기에 들어감 -->
+  <p>편의점 메뉴 콘텐츠가 여기에 들어갑니다.</p>
+</div>
+  <script>
+    function loadCafe(cafeName, btn) {
+  const container = document.getElementById("menu-container");
+  container.innerHTML = '';
+  
+ 
+  document.getElementById("cafe-info").innerHTML = cafeHours[cafeName] || '';
+
+
+  cafeMenus[cafeName].forEach(menu => {
+    const div = document.createElement("div");
+    div.className = "menu-card";
+     if (menu.link) {
+      div.innerHTML = `
+        <a href="${menu.link}" target="_blank" style="
+          display: block;
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          font-weight: bold;
+          color: #0074D9;
+          font-size: 16px;
+        ">
+          📦 ${menu.name}
+        </a>
+      `;
+    } else {
+      div.innerHTML = `<strong>${menu.name}</strong>${menu.price.toLocaleString()}원`;
+    }
+
+    container.appendChild(div);
+  });
+
+  document.querySelectorAll('.tab-header button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+    const cafeMenus = {
+      "애인트": [ 
+  { name: "오늘의 음료", price: 0 },
+  { name: "(Ice)아메리카노", price: 0 },
+  { name: "(Ice)벤티 아메리카노", price: 0 },
+  { name: "(Ice)카페라떼", price: 0 },
+  { name: "(Ice)벤티카페라떼", price: 0 },
+  { name: "(Ice)카페비엔나", price: 0 },
+  { name: "(Ice)바닐라라떼", price: 0 },
+  { name: "(Ice)헤이즐넛라떼", price: 0 },
+  { name: "(Ice)카라멜라떼", price: 0 },
+  { name: "(Ice)카라멜마끼아또", price: 0 },
+  { name: "(Ice)카페모카", price: 0 },
+  { name: "(Ice)헤이즐넛모카", price: 0 },
+  { name: "(Ice)화이트모카", price: 0 },
+  { name: "(Hot)아메리카노", price: 0 },
+  { name: "(Hot)벤티아메리카노", price: 0 },
+  { name: "(Hot)카페비엔나", price: 0 },
+  { name: "(Hot)에스프레소", price: 0 },
+  { name: "(Hot)카페라떼", price: 0 },
+  { name: "(Hot)벤티카페라떼", price: 0 },
+  { name: "(Hot)바닐라라떼", price: 0 },
+  { name: "(Hot)헤이즐넛라떼", price: 0 },
+  { name: "(Hot)카라멜라떼", price: 0 },
+  { name: "(Hot)카푸치노", price: 0 },
+  { name: "복숭아아이스티", price: 0 },
+  { name: "벤티 복숭아아이스티", price: 0 },
+  { name: "석류아이스티", price: 0 },
+  { name: "벤티석류아이스티", price: 0 },
+  { name: "자몽에이드", price: 0 },
+  { name: "(Ice)페퍼민트허브티", price: 0 },
+  { name: "(Hot)페퍼민트허브티", price: 0 },
+  { name: "(Ice)루이보스허브티", price: 0 },
+  { name: "(Hot)루이보스허브티", price: 0 },
+  { name: "(Ice)녹차", price: 0 },
+  { name: "(Hot)녹차", price: 0 },
+  { name: "(Ice)얼그레이홍차", price: 0 },
+  { name: "(Hot)얼그레이홍차", price: 0 },
+  { name: "(Ice)캐모마일티", price: 0 },
+  { name: "(Hot)캐모마일티", price: 0 },
+  { name: "(Ice)녹차라떼", price: 0 },
+  { name: "(Hot)녹차라떼", price: 0 },
+  { name: "(Ice)홍차라떼", price: 0 },
+  { name: "(Hot)홍차라떼", price: 0 },
+  { name: "(Ice)초코라떼", price: 0 },
+  { name: "(Hot)초코라떼", price: 0 },
+  { name: "(Ice)얼그레이라떼", price: 0 },
+  { name: "(Hot)얼그레이라떼", price: 0 },
+  { name: "(Ice)화이트초코라떼", price: 0 },
+  { name: "(Hot)화이트초코라떼", price: 0 },
+  { name: "(Ice)12곡라떼", price: 0 },
+  { name: "(Hot)12곡라떼", price: 0 },
+  { name: "식혜", price: 0 },
+  { name: "스팀밀크", price: 0 }
+],
+
+      "맘스카페": [
+{
+    name: "주문하러 가기",
+    price: 0,
+    link: "https://m.booking.naver.com/order/bizes/1373037/items/6611178?theme=place&refererCode=menutab&lang=ko&area=ple"
+  },
+  { name: "아메리카노", price: 1800 },
+  { name: "카페라떼", price: 2800 },
+  { name: "바닐라라떼", price: 3000 },
+  { name: "카라멜마끼아또", price: 3300 },
+  { name: "녹차라떼", price: 3200 },
+  { name: "초코라떼", price: 3200 },
+  { name: "딸기라떼", price: 4500 },
+  { name: "플레인요거트스무디", price: 4500 },
+  { name: "딸기스무디", price: 4500 },
+  { name: "블루베리스무디", price: 4500 },
+  { name: "망고스무디", price: 4500 },
+  { name: "청포도에이드", price: 3500 },
+  { name: "자몽에이드", price: 3500 },
+  { name: "레몬에이드", price: 3500 },
+  { name: "블루베리에이드", price: 3500 },
+  { name: "캐모마일티", price: 3000 },
+  { name: "페퍼민트티", price: 3000 },
+  { name: "밀크티", price: 3200 },
+  { name: "유자차", price: 3200 },
+  { name: "대추차", price: 3200 },
+  { name: "복숭아아이스티", price: 3200 },
+  { name: "딸기바나나주스", price: 3500 },
+  { name: "딸기주스", price: 3500 },
+  { name: "망고주스", price: 3500 },
+  { name: "블루베리주스", price: 3500 },
+  { name: "바나나주스", price: 3500 },
+  { name: "토마토주스", price: 3500 },
+  { name: "키위주스", price: 3500 }
+],
+      "히즈빈스": [
+  {
+    name: "주문하러 가기",
+    price: 0,
+    link: "https://m.booking.naver.com/order/bizes/485028/items/3803944?theme=place&refererCode=menutab&lang=ko&area=ple"
+  },
+  { name: "에스프레소", price: 3300 },
+  { name: "아메리카노", price: 3300 },
+  { name: "카페라떼", price: 4000 },
+  { name: "카푸치노", price: 4500 },
+  { name: "바닐라라떼", price: 4500 },
+  { name: "헤이즐넛라떼", price: 4500 },
+  { name: "카페모카", price: 4800 },
+  { name: "카라멜마끼아또", price: 4800 },
+  { name: "아인슈패너", price: 4500 },
+  { name: "아인슈패너라떼", price: 5000 },
+  { name: "콜드브루커피", price: 4500 },
+  { name: "콜드브루라떼", price: 5300 },
+  { name: "옐로우콜드브루", price: 4900 },
+  { name: "돌체콜드브루", price: 5500 },
+  { name: "벨벳크림돌체콜드브루", price: 6000 },
+  { name: "리얼딸기라떼", price: 5500 },
+  { name: "초콜릿라떼", price: 4500 },
+  { name: "말차라떼", price: 4500 },
+  { name: "오곡라떼", price: 4500 },
+  { name: "밀크티", price: 4500 },
+  { name: "플레인요거트히빈치노", price: 5000 },
+  { name: "블루베리요거트히빈치노", price: 5000 },
+  { name: "딸기요거트히빈치노", price: 5000 },
+  { name: "쿠키히빈치노", price: 5000 },
+  { name: "밀크쉐이크", price: 5000 },
+  { name: "복숭아아이스티", price: 3300 },
+  { name: "유기농차(캐모마일/민트블렌딩/다질링)", price: 3300 },
+  { name: "수제차(레몬/레몬생강)", price: 4500 },
+  { name: "레몬에이드", price: 5000 },
+  { name: "청포도에이드", price: 5000 },
+  { name: "유기농쿠키", price: 2500 },
+  { name: "번트치즈케이크", price: 5900 },
+  { name: "티라미수케이크", price: 5900 },
+  
+],
+      "빽다방": [
+       {
+    name: "메뉴보러 가기",
+    price: 0,
+    link: "https://paikdabang.com/menu/menu_new/"
+  },
+      ],
+      "예소드": [{
+    name: "인스타그램📷",
+    price: 0,
+    link: "https://www.instagram.com/yesod_lounge?igsh=aXdhM3Uyc2M2dTNt"
+  },
+         { name: "아메리카노(L size+1000)", price: 3500 },
+  { name: "헤이즐넛 아메리카노(L size+1000)", price: 4500 },
+  { name: "카페라떼", price: 3900 },
+  { name: "바닐라라떼", price: 4500 },
+  { name: "헤이즐넛라떼", price: 4500 },
+  { name: "돌체라떼(연유)", price: 4800 },
+  { name: "카라멜마끼아토(휘핑0)", price: 4800 },
+  { name: "에스프레소", price: 3000 },
+  { name: "아포가토", price: 4800 },
+  { name: "아인슈페너", price: 5300 },
+  { name: "흑임자크림 라떼", price: 6400 },
+  { name: "버터스카치크림 라떼", price: 6400 },
+  { name: "모카크림 라떼", price: 6400 },
+  { name: "망고스무디", price: 5500 },
+  { name: "딸기스무디", price: 5500 },
+  { name: "딸기요거트스무디", price: 5900 },
+  { name: "블루베리요거트스무디", price: 6300 },
+  { name: "플레인요거트스무디", price: 5500 },
+  { name: "북극곰스노우(연유)", price: 5000 },
+  { name: "더위산양(연유+에스프레소)", price: 5700 },
+  { name: "밀크쉐이크", price: 5300 },
+  { name: "다이제밀크쉐이크", price: 5900 },
+  { name: "오레오밀크쉐이크", price: 5900 },
+  { name: "초코밀크쉐이크", price: 5900 },
+  { name: "얼그레이밀크쉐이크", price: 5900 },
+  { name: "말차밀크쉐이크", price: 5900 },
+  { name: "유자/한라봉 크러쉬", price: 5300 },
+  { name: "유자민트티", price: 5500 },
+  { name: "블랙퍼스트/얼그레이/민트/카모마일 티", price: 3900 },
+  { name: "레몬/자몽/거제유자/한라봉 패션후르츠한라봉 에이드", price: 5000 },
+  { name: "레몬/자몽/거제유자/한라봉 차", price: 4500 },
+  { name: "블랙퍼스트 아이스티", price: 4300 },
+  { name: "허니자몽블랙티", price: 3900 },
+  { name: "얼그레이 밀크티", price: 4500 },
+  { name: "딸기 얼그레이 밀크티", price: 4900 },
+  { name: "리얼 딸기라떼", price: 5500 },
+  { name: "리얼 초코라떼", price: 4500 },
+  { name: "흑임자라떼", price: 5500 },
+  { name: "제주말차라떼", price: 5000 },
+  { name: "말차샷라떼", price: 5500 },
+  { name: "초코나무 숲", price: 5300 },
+  { name: "딸기말차라떼", price: 5500 },
+  { name: "코카콜라/스프라이트/닥터페퍼/펩시제로(라임)", price: 2500 },
+  { name: "바닐라 아이스크림", price: 4000 },
+  { name: "그래놀라 요거트", price: 4900 },
+  { name: "오리지널 브라우니", price: 4500 },
+  { name: "바스크 치즈 컵케이크", price: 4500 },
+  { name: "양념쌀떡꼬치", price: 3800 },
+  { name: "시나몬슈가쌀떡꼬치", price: 3800 },
+  { name: "츄러스", price: 3800 },
+  { name: "가라아게&떡꼬치", price: 9900 },
+  { name: "낙지볶음밥", price: 5900 },
+  { name: "새우볶음밥", price: 5900 }
+]};
+const cafeHours = {
+  "애인트": `⏰ <b>운영시간</b><br>월~금: 08:00–18:30<br>일: 11:00–18:30`,
+  "맘스카페": `⏰ <b>운영시간</b><br>월~토: 08:00-20:00`,
+  "히즈빈스": `⏰ <b>운영시간</b><br>월~금: 09:00-21:00`,
+  "빽다방": `⏰ <b>운영시간</b><br>09:00–21:00`,
+  "예소드": `⏰ <b>운영시간</b><br>월-금:09:00-24:00  토/일: 12:00-22:00`
+};
+      
+
+function showMainTab(tabId, btn) {
+  document.querySelectorAll('#restaurant-tab, #cafe-tab, #store-tab').forEach(tab => {
+    tab.style.display = 'none';
+  });
+
+  document.getElementById(tabId).style.display = 'block';
+
+  document.querySelectorAll('.main-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+    // 기본값 로딩
+   window.onload = () => {
+  showMainTab('restaurant-tab', document.querySelector('.main-tab'));
+  loadCafe("애인트", document.querySelector('.tab-header button'));
+};
+  </script>
+
+</body>
+</html>
