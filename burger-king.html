@@ -56,31 +56,26 @@
       cursor: pointer;
     }
 
-    /* 탭 메뉴 (식당 리스트) */
-    .restaurant-tabs {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      border-bottom: 1px solid #ccc;
-    }
+   .restaurant-tabs a {
+  padding: 12px 16px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  background: #fff;
+  color: #333;
+  margin-right: 4px;
 
-    .restaurant-tabs a {
-      padding: 12px 16px;
-      text-decoration: none;
-      font-weight: 500;
-      border: 1px solid #ccc;
-      border-bottom: none;
-      background-color: #fff;
-      color: #333;
-      text-align: center;
-    }
 
-    .restaurant-tabs a.active {
-      background-color: black;
-      color: white;
-      font-weight: bold;
-    }
+  display: flex;
+  align-items: center;  
+  justify-content: center; 
+
+  height: 54px; 
+  min-width: 120px; 
+  border-radius: 8px;
+}
+
 
     /* 메뉴 카드 그리드 */
     .menu-container {
