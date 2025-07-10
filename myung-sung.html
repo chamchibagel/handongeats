@@ -5,8 +5,7 @@
   <title>명성</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
+ body {
       font-family: 'Pretendard', sans-serif;
       background-color: #f9f9f9;
       display: flex;
@@ -23,24 +22,35 @@
       background-color: white;
       border-bottom: 1px solid #ccc;
     }
+
     .logo {
       font-size: 22px;
       font-weight: bold;
       color: #1368BD;
     }
+
+    .category-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
     .category-buttons a {
       text-decoration: none;
+      border: none;
       padding: 8px 14px;
       border-radius: 20px;
       background-color: #e8f0fa;
       color: #1368BD;
       font-weight: bold;
-      margin-right: 12px;
     }
-    .category-buttons a.active { background-color: #1368BD; color: white; }
-    .about { color: #1368BD; font-weight: bold; cursor: pointer; }
+
+    .category-buttons a.active {
+      background-color: #1368BD;
+      color: white;
+    }
 
     
+    /* nav 스타일 */
     nav {
       width: 100%;
       height: 54px;
@@ -78,6 +88,7 @@
       color: white;
       font-weight: bold;
     }
+
 
     /* 바로 가기 카드 */
     .menu-container {
@@ -172,7 +183,7 @@
       <a href="cafe.html"># 카페</a>
       <a href="convenience.html"># 매점 · 편의점</a>
     </div>
-    <div class="about">ABOUT ▼</div>
+
   </div>
 
   <!-- 식당 탭 -->
@@ -200,12 +211,22 @@
   
 
   <!-- 푸터 -->
-  <div class="footer">
-    <div class="logo">handong eats</div>
-    <div class="info">2025‑Summer 프론트엔드 입문</div>
-    <div class="team">
-      22300038 구본서 · 22400020 고윤 · 22001073 하엘림 · 22400190 김채은 · 22101034 박주현
-    </div>
+          <footer style="background-color: #F2F4F7; color: #1368BD; padding: 24px 80px;">
+  <img src="images/logo_BLUE.svg" alt="HANDONG EATS" height="54" style="margin-bottom: 12px;">
+  <p style="font-size: 18px;">
+    2025-Summer 프론트엔드 입문<br>
+    <span style="font-size: 12px;">
+      22300038 구본서 &nbsp;&nbsp;
+      22400020 고윤 &nbsp;&nbsp;
+      22001073 하엘림 &nbsp;&nbsp;
+      22400190 김채은 &nbsp;&nbsp;
+      22101034 박주현
+    </span>
+  </p>
+</footer>
+
   </div>
 </body>
 </html>
+
+
