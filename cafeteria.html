@@ -2,7 +2,7 @@
     <head> 
         <style>
             h5{color: #1368BD;}
-            #menu>div{width:196px;height:196px;color: #000;
+            #item{width:196px;height:196px;color: #000;
             text-align: center;font-family: Pretendard;
             font-size: 24px;font-style: normal;
             font-weight: 600;line-height: normal;
@@ -13,22 +13,17 @@
             header{width: 1440px; height: 120px;
             flex-shrink: 0; background-color:#FFFF;
             border-color: #1368BD;border-radius: 10px;}
-             nav{width: 100%; height: 54px; 
+            nav{width: 100%; height: 54px; 
             display:flex;flex-shrink: 0; flex-wrap:nowrap;
             color: #000; padding:10px; font-family: Pretendard; 
             font-size: 22px; font-style: normal; font-weight: 500;
-            line-height: normal; padding:5px;border-radius: 10px;}
+            line-height: normal; padding:5px;}
             nav a {flex: 1; flex-shrink: 0;display: inline-block; border: 1px solid black; 
                 border-radius: 0px; text-decoration: none; text-align: center;
-                color: #000; background-color: #FCFDFF; transition: 0.2s; font-size: 20px;border-radius: 10px;}
+                color: #000; background-color: #FCFDFF; transition: 0.2s; font-size: 20px;
+                border-radius: 10px;}
             #menu {display: flex; flex-wrap: wrap; justify-content: center;}
             img{align-items: center;}
-            footer{width: 1440px;height: 317px;
-            flex-shrink: 0;background: #F2F4F7}
-            #footnote{color: #1368BD;text-align:left;
-            font-family: Pretendard;font-size: 18px;
-            font-style: normal;font-weight: 500;
-            line-height: normal;}
             #dundun,#hplate, #ttasu, #deli, #asian{font-size: medium; font-weight: 700; color: #1368BD;}
             #long,#toolong {font-size: xx-small;}
             header {width: 100%; background-color: #fff;padding: 20px 40px;}
@@ -38,6 +33,9 @@
             .category-boxes {display: flex;gap: 12px;}
             .category {padding: 8px 16px;border: 2px solid #1368BD;border-radius: 12px;background-color: #FCFDFF;font-family: Pretendard;
             font-size: 16px;font-weight: 600;color: #1368BD;white-space: nowrap;text-align: center;transition: 0.3s}
+            #blue{background-color: #1368BD}
+            #blue>a{text-decoration:none; color:white;}
+            #nonblue>a{text-decoration: none; color:#1368BD}
         </style>
         <title>학생식당</title>    
     </head>
@@ -46,9 +44,9 @@
     <div class="header">
          <img src="logo.svg">
     <div class="category-boxes">
-    <div class="category">#식당</div>
-    <div class="category">#카페</div>
-    <div class="category">#매점*편의점</div>
+    <div id="blue"class="category"><a href="">#식당</a></div>
+    <div id="nonblue"class="category"><a href="">#카페</a></div>
+    <div id="nonblue"class="category"><a href="">#매점*편의점</a></div>
     </div>
     </div>
     </header>
@@ -64,44 +62,75 @@
     </nav>
         <h5>영업시간= 조식- 없음/중식-11:30~13:30/석식-17:30~18:30</h5>
 <section id="menu">
-    <div>  <p id="dundun">든든한동</p>
+    <div id="item">  <p id="dundun">든든한동</p>
         LUNCH
-        <p id="long">참치생야체비빔밥, 우동국물, 동그랑땡데리조림, 청포묵무침, 김치</P>
+        <p id="long">싸랍,어묵국,탕수육,쫄면야채무침,치커리무침,김치</P>
         <p>가격:</p>
-        <p>재고있음</p>
+        <button onclick="toggleSoldOut('lunch-status')">완판 처리</button>
+      <div id="lunch-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div>  <p id="dundun">든든한동</p>
+    <div id="item">  <p id="dundun">든든한동</p>
         DINNER
-        <p id="toolong">쌀밥, 미역국, 돼지고기콩나물볶음, 사각어묵볶음, 무생체, 김치</p>
+        <p id="toolong">-운영없음-</p>
         <p>가격:</p>
-        <p>재고있음</p>
+        <button onclick="toggleSoldOut('Dinner-status')">완판 처리</button>
+      <div id="Dinner-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div>   <p id="hplate">hplate</p>
-        <p>등심돈까스</p>
-        <p>가격:</p>
-        <p>재고있음</p>
-    </div>
-    <div>  <p id="hplate">hplate</p>
-        <p>메밀소바 set</p>
-        <p>가격:</p>
-        <p>재고있음</p>
-    </div>
-    <div> <p id="ttasu">따스한동</p>
-        <p>순두부찌개</p>
-        <p>가격:</p>
-        <p>재고있음</p>
-    </div>
-    <div> <p id="deli">han's deli</p>
+    <div id="item">   <p id="hplate">hplate</p>
         <p>-운영없음-</p>
+        <p>가격:</p>
+        <button onclick="toggleSoldOut('hplate1-status')">완판 처리</button>
+      <div id="hplate1-status" class="sold-out" style="display: none;font-size: 20px">✅ 완판되었습니다</div>
     </div>
-    <div> <p id="asian"> asian market</p>
+    <div id="item">  <p id="hplate">hplate</p>
         <p>-운영없음-</p>
+        <p>가격:</p>
+        <button onclick="toggleSoldOut('hplate2-status')">완판 처리</button>
+      <div id="hplate2-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
+    </div>
+    <div id="item"> <p id="ttasu">따스한동</p>
+        <p>치즈콩불이</p>
+        <p>가격:</p>
+        <button onclick="toggleSoldOut('ttasu1-status')">완판 처리</button>
+      <div id="ttasu1-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
+    </div>
+    <div id="item"> <p id="ttasu">따스한동</p>
+        <p>고구마돈까스</p>
+        <p>가격:</p>
+        <button onclick="toggleSoldOut('ttasu2-status')">완판 처리</button>
+      <div id="ttasu2-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
+    </div>
+    <div id="item"> <p id="deli">han's deli</p>
+        <p>-운영없음-</p>
+        <p>가격:</p>
+        <button onclick="toggleSoldOut('deli1-status')">완판 처리</button>
+      <div id="deli1-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
+    </div>
+    <div id="item"> <p id="asian"> asian market</p>
+        <p>-운영없음-</p>
+        <p>가격:</p>
+        <button onclick="toggleSoldOut('asian1-status')">완판 처리</button>
+      <div id="asian1-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
 </section>
-    <footer>
-        <img src="logo.svg">
-        <p id="footnote">2025-Summer 프론트엔드 입문<br>
-        22300038 구본서 22400020 고윤 22001073 하엘림 22400190 김채은 22101034 박주현</p>
-    </footer>
+    <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
+            <img src="logo.svg" alt="HANDONG EATS" height="54" style="position: relative; top: 78px; left: 80px;">
+            <p style="position: absolute; left: 80px; font-size: 18px; position: relative; top: 159px;">2025-Summer 프론트엔드 입문<br>
+            <font style="font-size: 12px;">
+                22300038 구본서 &nbsp; &nbsp; &nbsp;
+                22400020 고윤 &nbsp; &nbsp; &nbsp;
+                22001073 하엘림 &nbsp; &nbsp; &nbsp;
+                22400190 김채은 &nbsp; &nbsp; &nbsp;
+                22101034 박주현 </font></p>
+    <script>
+    function toggleSoldOut(id) {
+      const status = document.getElementById(id);
+      if (status.style.display === "none") {
+        status.style.display = "block";
+      } else {
+        status.style.display = "none";
+      }
+    }
+  </script>
     </Body>
 </html>
