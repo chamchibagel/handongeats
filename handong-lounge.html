@@ -30,25 +30,39 @@
       color: #1368BD;
     }
 
-    .category-buttons {
-      display: flex;
-      gap: 12px;
-    }
+    .category-boxes {
+  display: flex;
+  gap: 12px;
+}
 
-    .category-buttons a {
-      text-decoration: none;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 20px;
-      background-color: #e8f0fa;
-      color: #1368BD;
-      font-weight: bold;
-    }
+.category {
+  padding: 8px 16px;
+  border: 2px solid #1368BD;
+  border-radius: 12px;
+  background-color: #FCFDFF;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1368BD;
+  white-space: nowrap;
+  text-align: center;
+  transition: 0.3s;
+}
 
-    .category-buttons a.active {
-      background-color: #1368BD;
-      color: white;
-    }
+#blue {
+  background-color: #1368BD;
+}
+
+#blue > a {
+  text-decoration: none;
+  color: white;
+}
+
+#nonblue > a {
+  text-decoration: none;
+  color: #1368BD;
+}
+
 
    
 
@@ -164,14 +178,13 @@
 
   <!-- 상단 네비게이션 -->
   <div class="top-nav">
-    <div class="logo">handong eats</div>
-    <div class="category-buttons">
-      <a href="restaurant.html" class="active"># 식당</a>
-      <a href="cafe.html"># 카페</a>
-      <a href="convenience.html"># 매점 · 편의점</a>
-    </div>
-    
+    <div class="logo"><img src="logo_BLUE.svg" alt=""></div>
+  <div class="category-boxes">
+    <div class="category" id="blue"><a href="restaurant.html"># 식당</a></div>
+    <div class="category" id="nonblue"><a href="cafe.html"># 카페</a></div>
+    <div class="category" id="nonblue"><a href="convenience.html"># 매점 · 편의점</a></div>
   </div>
+</div>
 
   <!-- 식당 탭 -->
   <nav>
@@ -239,20 +252,16 @@
   </div>
 
   <!-- 하단 푸터 -->
- <footer style="background-color: #F2F4F7; color: #1368BD; padding: 24px 80px;">
-  <img src="logo_BLUE.svg" alt="HANDONG EATS" height="54" style="margin-bottom: 12px;">
-  <p style="font-size: 18px;">
-    2025-Summer 프론트엔드 입문<br>
-    <span style="font-size: 12px;">
-      22300038 구본서 &nbsp;&nbsp;
-      22400020 고윤 &nbsp;&nbsp;
-      22001073 하엘림 &nbsp;&nbsp;
-      22400190 김채은 &nbsp;&nbsp;
-      22101034 박주현
-    </span>
-  </p>
-</footer>
-  </div>
+                 <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
+            <img src="logo_BLUE.svg" alt="HANDONG EATS" height="54" style="position: relative; top: 78px; left: 80px;">
+            <p style="position: absolute; left: 80px; font-size: 18px; position: relative; top: 159px;">2025-Summer 프론트엔드 입문<br>
+            <font style="font-size: 12px;">
+                22300038 구본서 &nbsp; &nbsp; &nbsp;
+                22400020 고윤 &nbsp; &nbsp; &nbsp;
+                22001073 하엘림 &nbsp; &nbsp; &nbsp;
+                22400190 김채은 &nbsp; &nbsp; &nbsp;
+                22101034 박주현 </font></p>
+        </footer>
 
 </body>
 </html>
