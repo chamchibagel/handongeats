@@ -55,31 +55,43 @@
       cursor: pointer;
     }
 
-    .restaurant-tabs {
+     nav {
+      width: 100%;
+      height: 54px;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .restaurant-tabs a {
-      padding: 12px 16px;
-      text-decoration: none;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+      color: #000;
+      padding: 5px;
+      font-family: Pretendard;
+      font-size: 22px;
+      font-style: normal;
       font-weight: 500;
-      border: 1px solid #ccc;
-      border-bottom: none;
-      background-color: #fff;
-      color: #333;
-      text-align: center;
+      line-height: normal;
+      border-radius: 10px;
+      margin-top: 15px;
     }
 
-    .restaurant-tabs a.active {
+    nav a {
+      flex: 1;
+      flex-shrink: 0;
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      color: #000;
+      background-color: #FCFDFF;
+      transition: 0.2s;
+      font-size: 20px;
+      padding: 10px 0;
+    }
+
+    nav a.active {
       background-color: black;
       color: white;
       font-weight: bold;
     }
-
     h2 {
       margin: 40px 40px 10px;
       color: #1368BD;
@@ -165,15 +177,15 @@
   </div>
 
   <!-- 식당 탭 -->
-  <div class="restaurant-tabs">
+ <nav>
     <a href="cafeteria.html">학생식당</a>
     <a href="moms-kitchen.html" class="active">맘스키친</a>
     <a href="handong-lounge.html">라운지</a>
     <a href="gracetable.html">그레이스 더 테이블</a>
-    <a href="myung-sung.html">명성</a>
+    <a href="myung-sung.html" >명성</a>
     <a href="burger-king.html">버거킹</a>
     <a href="salad.html">샐러디</a>
-  </div>
+  </nav>
 
   <!-- 아침 -->
   <h2>아침</h2>
