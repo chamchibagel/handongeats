@@ -1,7 +1,7 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-
+  <meta charset="UTF-8">
   <title>버거킹</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,21 +56,44 @@
       cursor: pointer;
     }
 
-    nav{width: 100%; height: 54px; 
-            display:flex;flex-shrink: 0; flex-wrap:nowrap;
-            color: #000; padding:10px; font-family: Pretendard; 
-            font-size: 22px; font-style: normal; font-weight: 500;
-            line-height: normal; padding:5px;border-radius: 10px;}
-            nav a {flex: 1; flex-shrink: 0;display: inline-block; border: 1px solid black; 
-                border-radius: 0px; text-decoration: none; text-align: center;
-                color: #000; background-color: #FCFDFF; transition: 0.2s; font-size: 20px;border-radius: 10px;}
+    /* nav 스타일 */
+    nav {
+      width: 100%;
+      height: 54px;
+      display: flex;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+      color: #000;
+      padding: 5px;
+      font-family: Pretendard;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
 
-nav a.active {
-  background-color: black;
-  color: white;
-  font-weight: bold;
-}
+    nav a {
+      flex: 1;
+      flex-shrink: 0;
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      color: #000;
+      background-color: #FCFDFF;
+      transition: 0.2s;
+      font-size: 20px;
+      padding: 10px 0;
+    }
 
+    nav a.active {
+      background-color: black;
+      color: white;
+      font-weight: bold;
+    }
 
     /* 메뉴 카드 그리드 */
     .menu-container {
@@ -165,15 +188,15 @@ nav a.active {
   </div>
 
   <!-- 식당 탭 -->
-<nav>
+  <nav>
     <a href="cafeteria.html">학생식당</a>
     <a href="moms-kitchen.html">맘스키친</a>
     <a href="handong-lounge.html">라운지</a>
     <a href="gracetable.html">그레이스 더 테이블</a>
     <a href="myung-sung.html">명성</a>
-    <a href="burger-king.html"class="active">버거킹</a>
+    <a href="burger-king.html" class="active">버거킹</a>
     <a href="salad.html">샐러디</a>
-</nav> 
+  </nav>
 
   <!-- 메뉴 카드 -->
   <div class="menu-container">
@@ -190,7 +213,7 @@ nav a.active {
     <div class="logo">handong eats</div>
     <div class="info">2025-Summer 프론트엔드 입문</div>
     <div class="team">
-       22300038 구본서 · 22400020 고윤 · 22001073 하엘림 · 22400190 김채은 · 22101034 박주현
+      22300038 구본서 · 22400020 고윤 · 22001073 하엘림 · 22400190 김채은 · 22101034 박주현
     </div>
   </div>
 
