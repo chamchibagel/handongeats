@@ -6,6 +6,8 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    h5{color: #1368BD;}
+
     body {
       font-family: 'Pretendard', sans-serif;
       background-color: #ffffff;
@@ -66,15 +68,10 @@
       width: 100%;
       height: 54px;
       display: flex;
-      flex-shrink: 0;
       flex-wrap: nowrap;
-      color: #000;
       padding: 5px;
-      font-family: Pretendard;
       font-size: 22px;
-      font-style: normal;
       font-weight: 500;
-      line-height: normal;
       border-radius: 10px;
       margin-top: 15px;
     }
@@ -110,24 +107,29 @@
       display: flex;
       flex-wrap: wrap;
       gap: 24px;
-      padding: 0 40px 40px;
+      justify-content: left;
+      padding: 40px;
+      flex: 1;
     }
 
+    
     .menu-card {
       width: 196px;
       height: 196px;
-      flex-shrink: 0;
       border: 1px solid #1368BD;
       border-radius: 12px;
       overflow: hidden;
-      background-color: #ffffff;
+      background-color: #FCFDFF;
       text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding-bottom: 12px;
     }
 
     .menu-card img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
+      margin-top: 10px;
+      width: 55%;
+      height: 70px;
+      
     }
 
     .menu-info {
@@ -143,6 +145,13 @@
     .menu-price {
       font-size: 14px;
       color: #333;
+      margin-bottom: 5px;
+    }
+
+    .sold-out {
+      color: black;
+      font-size: 20px;
+      margin-top: 5px;
     }
 
     .footer {
@@ -168,6 +177,7 @@
       font-size: 13px;
       margin-top: 4px;
     }
+
   </style>
 </head>
 <body>
@@ -177,8 +187,8 @@
    <div class="logo"><img src="logo_BLUE.svg" alt=""></div>
   <div class="category-boxes">
     <div class="category" id="blue"><a href="restaurant.html"># 식당</a></div>
-    <div class="category" id="nonblue"><a href="카페.html"># 카페</a></div>
-    <div class="category" id="nonblue"><a href="편의점 페이지.html"># 매점 · 편의점</a></div>
+    <div class="category" id="nonblue"><a href="cafe.html"># 카페</a></div>
+    <div class="category" id="nonblue"><a href="convenience.html"># 매점 · 편의점</a></div>
   </div>
 </div>
 
@@ -193,43 +203,54 @@
     <a href="salad.html">샐러디</a>
   </nav>
 
+   <h5> 영업시간: 아침 07:30~09:00 / 점심 10:30~14:30 / 저녁 16:30~19:30</h5>
+
   <!-- 아침 -->
   <h2>아침</h2>
   <div class="menu-container">
     <div class="menu-card">
-      <img src="맘스키친_아침" alt="맘스키친 아침">
+      <img src="맘스키친_아침.png" alt="맘스키친 아침">
       <div class="menu-info">
         <div class="menu-name">식빵</div>
         <div class="menu-price">4,500원</div>
+         <button onclick="toggleSoldOut('soldout-맘스키친 아침')">완판 처리</button>
+        <div id="soldout-맘스키친 아침" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
+        
       </div>
     </div>
   </div>
 
   <!-- 점심 -->
-  <h2>점심</h2>
-  <div class="menu-container">
-    <div class="menu-card">
-      <img src="맘스키친_안동찜닭.png" alt="안동찜닭">
-      <div class="menu-info">
-        <div class="menu-name">안동찜닭</div>
-        <div class="menu-price">4,500원</div>
-      </div>
-    </div>
-    <div class="menu-card">
-      <img src="맘스키친_냉국수&군만두.png" alt="냉국수 & 군만두">
-      <div class="menu-info">
-        <div class="menu-name">냉국수 & 군만두</div>
-        <div class="menu-price">4,500원</div>
-      </div>
-    </div>
-    <div class="menu-card">
-      <img src="맘스키친_카레돈까스.png" alt="카레돈까스">
-      <div class="menu-info">
-        <div class="menu-name">카레돈까스</div>
-        <div class="menu-price">4,500원</div>
-      </div>
+<h2>점심</h2>
+<div class="menu-container">
+  <div class="menu-card">
+    <img src="맘스키친_안동찜닭.png" alt="안동찜닭">
+    <div class="menu-info">
+      <div class="menu-name">안동찜닭</div>
+      <div class="menu-price">4,500원</div>
+      <button onclick="toggleSoldOut('soldout-맘스키친 점심 안동찜닭')">완판 처리</button>
+        <div id="soldout-맘스키친 점심 안동찜닭" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
     </div>
   </div>
+  <div class="menu-card">
+    <img src="맘스키친_냉국수&군만두.png" alt="냉국수 & 군만두">
+    <div class="menu-info">
+      <div class="menu-name">냉국수 & 군만두</div>
+      <div class="menu-price">4,500원</div>
+      <button onclick="toggleSoldOut('soldout-맘스키친 점심 냉국수')">완판 처리</button>
+        <div id="soldout-맘스키친 점심 냉국수" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
+    </div>
+  </div>
+  <div class="menu-card">
+    <img src="맘스키친_카레돈까스.png" alt="카레돈까스">
+    <div class="menu-info">
+      <div class="menu-name">카레돈까스</div>
+      <div class="menu-price">4,500원</div>
+      <button onclick="toggleSoldOut('soldout-맘스키친 점심 카레돈꺼스')">완판 처리</button>
+        <div id="soldout-맘스키친 점심 카레돈까스" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
+    </div>
+  </div>
+</div>
 
   <!-- 저녁 -->
   <h2>저녁</h2>
@@ -239,6 +260,8 @@
       <div class="menu-info">
         <div class="menu-name">안동찜닭</div>
         <div class="menu-price">4,500원</div>
+         <button onclick="toggleSoldOut('soldout-맘스키친 저녁 안동찜닭')">완판 처리</button>
+        <div id="soldout-맘스키친 저녁 안동찜닭" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
     <div class="menu-card">
@@ -246,6 +269,8 @@
       <div class="menu-info">
         <div class="menu-name">햄오므라이스덮밥 & 소세지</div>
         <div class="menu-price">4,500원</div>
+             <button onclick="toggleSoldOut('soldout-맘스키친 저녁 햄오므라이스덮밥')">완판 처리</button>
+        <div id="soldout-맘스키친 저녁 햄오므라이스덮밥" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
     <div class="menu-card">
@@ -253,6 +278,9 @@
       <div class="menu-info">
         <div class="menu-name">카레돈까스</div>
         <div class="menu-price">4,500원</div>
+           <button onclick="toggleSoldOut('soldout-맘스키친 저녁 카레돈까스')">완판 처리</button>
+        <div id="soldout-맘스키친 저녁 카레돈까스" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
+        
       </div>
     </div>
   </div>
@@ -268,6 +296,17 @@
                 22400190 김채은 &nbsp; &nbsp; &nbsp;
                 22101034 박주현 </font></p>
         </footer>
+
+        <script>
+    function toggleSoldOut(id) {
+      const status = document.getElementById(id);
+      if (status.style.display === "none") {
+        status.style.display = "block";
+      } else {
+        status.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
