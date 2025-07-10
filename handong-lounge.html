@@ -6,6 +6,8 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+     h5{color: #1368BD;}
+
     body {
       font-family: 'Pretendard', sans-serif;
       background-color: #ffffff;
@@ -14,7 +16,6 @@
       min-height: 100vh;
     }
 
-    /* 상단 네비게이션 */
     .top-nav {
       display: flex;
       justify-content: space-between;
@@ -22,7 +23,6 @@
       padding: 16px 40px;
       background-color: white;
       border-bottom: 1px solid #ccc;
-     
     }
 
     .logo {
@@ -32,63 +32,50 @@
     }
 
     .category-boxes {
-  display: flex;
-  gap: 12px;
-}
+      display: flex;
+      gap: 12px;
+    }
 
-.category {
-  padding: 8px 16px;
-  border: 2px solid #1368BD;
-  border-radius: 12px;
-  background-color: #FCFDFF;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1368BD;
-  white-space: nowrap;
-  text-align: center;
-  transition: 0.3s;
-}
+    .category {
+      padding: 8px 16px;
+      border: 2px solid #1368BD;
+      border-radius: 12px;
+      background-color: #FCFDFF;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1368BD;
+      text-align: center;
+      transition: 0.3s;
+    }
 
-#blue {
-  background-color: #1368BD;
-}
+    #blue {
+      background-color: #1368BD;
+    }
 
-#blue > a {
-  text-decoration: none;
-  color: white;
-}
+    #blue > a {
+      text-decoration: none;
+      color: white;
+    }
 
-#nonblue > a {
-  text-decoration: none;
-  color: #1368BD;
-}
+    #nonblue > a {
+      text-decoration: none;
+      color: #1368BD;
+    }
 
-
-   
-
-    /* 탭 메뉴 (식당 리스트) */
-     nav {
+    nav {
       width: 100%;
       height: 54px;
       display: flex;
-      flex-shrink: 0;
       flex-wrap: nowrap;
-      color: #000;
       padding: 5px;
-      font-family: Pretendard;
       font-size: 22px;
-      font-style: normal;
       font-weight: 500;
-      line-height: normal;
       border-radius: 10px;
       margin-top: 15px;
     }
 
     nav a {
       flex: 1;
-      flex-shrink: 0;
-      display: inline-block;
       border: 1px solid black;
       border-radius: 10px;
       text-decoration: none;
@@ -106,7 +93,6 @@
       font-weight: bold;
     }
 
-    /* 메뉴 카드 그리드 */
     .menu-container {
       display: flex;
       flex-wrap: wrap;
@@ -119,19 +105,20 @@
     .menu-card {
       width: 196px;
       height: 196px;
-      flex-shrink: 0;
       border: 1px solid #1368BD;
       border-radius: 12px;
       overflow: hidden;
       background-color: #FCFDFF;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding-bottom: 12px;
     }
 
     .menu-card img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
+      margin-top: 10px;
+      width: 55%;
+      height: 70px;
+      
     }
 
     .menu-info {
@@ -147,9 +134,15 @@
     .menu-price {
       font-size: 14px;
       color: #333;
+      margin-bottom: 5px;
     }
 
-    /* 하단 푸터 */
+    .sold-out {
+      color: black;
+      font-size: 20px;
+      margin-top: 5px;
+    }
+
     .footer {
       background-color: #f1f3f5;
       padding: 30px 40px;
@@ -173,19 +166,24 @@
       font-size: 13px;
       margin-top: 4px;
     }
+
+    
+    
+
+    
   </style>
 </head>
 <body>
 
   <!-- 상단 네비게이션 -->
   <div class="top-nav">
-    <div class="logo"><img src="logo_BLUE.svg" alt=""></div>
-  <div class="category-boxes">
-    <div class="category" id="blue"><a href="restaurant.html"># 식당</a></div>
-    <div class="category" id="nonblue"><a href="카페.html"># 카페</a></div>
-    <div class="category" id="nonblue"><a href="편의점 페이지.html"># 매점 · 편의점</a></div>
+     <div class="logo"><img src="logo_BLUE.svg" alt=""></div>
+    <div class="category-boxes">
+      <div class="category" id="blue"><a href="restaurant.html"># 식당</a></div>
+      <div class="category" id="nonblue"><a href="cafe.html"># 카페</a></div>
+      <div class="category" id="nonblue"><a href="convenience.html"># 매점 · 편의점</a></div>
+    </div>
   </div>
-</div>
 
   <!-- 식당 탭 -->
   <nav>
@@ -193,11 +191,12 @@
     <a href="moms-kitchen.html">맘스키친</a>
     <a href="handong-lounge.html" class="active">라운지</a>
     <a href="gracetable.html">그레이스 더 테이블</a>
-    <a href="myung-sung.html"  >명성</a>
+    <a href="myung-sung.html">명성</a>
     <a href="burger-king.html">버거킹</a>
     <a href="salad.html">샐러디</a>
   </nav>
 
+ <h5> 영업시간: 점심 11:30~14:00 / 저녁 17:20~19:00</h5>
 
   <!-- 메뉴 카드 -->
   <div class="menu-container">
@@ -207,6 +206,8 @@
       <div class="menu-info">
         <div class="menu-name">짜장면</div>
         <div class="menu-price">5,000원</div>
+        <button onclick="toggleSoldOut('soldout-짜장면')">완판 처리</button>
+        <div id="soldout-짜장면" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
 
@@ -215,6 +216,8 @@
       <div class="menu-info">
         <div class="menu-name">짬뽕</div>
         <div class="menu-price">5,500원</div>
+        <button onclick="toggleSoldOut('soldout-짬뽕')">완판 처리</button>
+        <div id="soldout-짬뽕" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
 
@@ -223,6 +226,8 @@
       <div class="menu-info">
         <div class="menu-name">탕수육</div>
         <div class="menu-price">6,000원</div>
+        <button onclick="toggleSoldOut('soldout-탕수육')">완판 처리</button>
+        <div id="soldout-탕수육" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
 
@@ -231,6 +236,8 @@
       <div class="menu-info">
         <div class="menu-name">부대찌개</div>
         <div class="menu-price">6,000원</div>
+        <button onclick="toggleSoldOut('soldout-부대찌개')">완판 처리</button>
+        <div id="soldout-부대찌개" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
 
@@ -239,6 +246,8 @@
       <div class="menu-info">
         <div class="menu-name">돼지국밥</div>
         <div class="menu-price">6,000원</div>
+        <button onclick="toggleSoldOut('soldout-돼지국밥')">완판 처리</button>
+        <div id="soldout-돼지국밥" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
 
@@ -247,22 +256,38 @@
       <div class="menu-info">
         <div class="menu-name">순두부찌개</div>
         <div class="menu-price">6,000원</div>
+        <button onclick="toggleSoldOut('soldout-순두부찌개')">완판 처리</button>
+        <div id="soldout-순두부찌개" class="sold-out" style="display: none;">✅ 완판되었습니다</div>
       </div>
     </div>
 
   </div>
 
   <!-- 하단 푸터 -->
-                 <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
-            <img src="logo_BLUE.svg" alt="HANDONG EATS" height="54" style="position: relative; top: 78px; left: 80px;">
-            <p style="position: absolute; left: 80px; font-size: 18px; position: relative; top: 159px;">2025-Summer 프론트엔드 입문<br>
-            <font style="font-size: 12px;">
-                22300038 구본서 &nbsp; &nbsp; &nbsp;
-                22400020 고윤 &nbsp; &nbsp; &nbsp;
-                22001073 하엘림 &nbsp; &nbsp; &nbsp;
-                22400190 김채은 &nbsp; &nbsp; &nbsp;
-                22101034 박주현 </font></p>
-        </footer>
+  <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
+    <img src="logo_BLUE.svg" alt="HANDONG EATS" height="54" style="position: relative; top: 78px; left: 80px;">
+    <p style="position: absolute; left: 80px; font-size: 18px; position: relative; top: 159px;">2025-Summer 프론트엔드 입문<br>
+      <font style="font-size: 12px;">
+        22300038 구본서 &nbsp; &nbsp; &nbsp;
+        22400020 고윤 &nbsp; &nbsp; &nbsp;
+        22001073 하엘림 &nbsp; &nbsp; &nbsp;
+        22400190 김채은 &nbsp; &nbsp; &nbsp;
+        22101034 박주현
+      </font>
+    </p>
+  </footer>
+
+  <!-- 완판 -->
+ <script>
+    function toggleSoldOut(id) {
+      const status = document.getElementById(id);
+      if (status.style.display === "none") {
+        status.style.display = "block";
+      } else {
+        status.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
