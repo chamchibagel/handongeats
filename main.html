@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Main</title>
         <style>
+
             header {
                 position: relative; height: 320px;
                 background: url(한동대학교.jpg); background-repeat: no-repeat;
@@ -22,7 +23,7 @@
                 font-size: 18px; color: #FFF; font-weight: 500; font-family: Pretendard;
             }
             .About:hover {
-                position: absolute; top: 41px; left: 1232px;
+                position: absolute; top: 41px; margin-left: auto;
                 display: flex;
                 width: 40px; height: 28px; gap: 10px;
                 padding: 8px 50px;
@@ -84,15 +85,19 @@
 
             h1 {
                 display: inline-block;
-                color: #1368BD;  background-color: (255, 255, 255, 0.20); backdrop-filter: blur(6px);
+                color: #1368BD;  background-color: rgba(250, 250, 250, 0.50); backdrop-filter: blur(10px);
                 font-size: 32px; font-weight: 800; font-family: Pretendard;
                 padding: 8px 50px; border-radius: 10px;}
+            
+            a {text-decoration: none;}
+
+            .Section02 {width: 100%; height: 620px; margin-top: 120px; background-size: cover; background-position: center; position: relative;}
         </style>
     </Head>
     
 
 
-    <Body>
+    <Body style="margin: 0; padding: 0;">
         <header>
             <div class="logo">
                 <img src="logo.svg" alt="HANDONG EATS">
@@ -112,49 +117,67 @@
         </header>
 
 
-        <section id="section01" style="margin: 0 80px;">
-            <br><br><br><h2>#식당</h2>
+        <section id="section01" style="padding: 0 80px; top: 320px;">
+            <a href="cafeteria.html"><h2>#식당</h2></a>
             <div class="container" id="Ritems">
-                <div class="item">학생식당<br>🥘</div>
-                <div class="item">맘스키친<br>🍛</div>
-                <div class="item">라운지<br>🍲</div>
-                <div class="item">그레이스더테이블<br>🍝</div>
-                <div class="item">명성<br>🍜</div>
-                <div class="item">버거킹<br>🍔</div>
-                <div class="item">샐러디<br>🥗</div>
-            </div><br><br><br>
+                <a href="cafeteria.html"><div class="item">학생식당<br>🥘</div></a>
+                <a href="moms-kitchen.html"><div class="item">맘스키친<br>🍛</div></a>
+                <a href="handong-lounge.html"><div class="item">라운지<br>🍲</div></a>
+                <a href="gracetable.html"><div class="item">그레이스더테이블<br>🍝</div></a>
+                <a href="myung-sung.html"><div class="item">명성<br>🍜</div></a>
+                <a href="burger-king.html"><div class="item">버거킹<br>🍔</div></a>
+                <a href="salad.html"><div class="item">샐러디<br>🥗</div></a>
+            </div>
 
-            <h2>#카페</h2>
+            <a href="카페.txt"><h2>#카페</h2></a>
             <div class="container" id="Cintems">
                 <div class="item">애플인더트리<br>🥐</div>
                 <div class="item">맘스카페<br>🍹</div>
                 <div class="item">히즈빈스<br>☕</div>
                 <div class="item">예소드<br>🍕</div>
                 <div class="item">빽다방<br>🧋</div>
-            </div><br><br><br>
+            </div>
 
-            <h2>#매점·편의점</h2>
+            <a href="store.html"><h2>#매점·편의점</h2></a>
             <div class="container" id="Mitem">
-                <div class="item">매점<br>🍉</div>
-                <div class="item">GS25<br>🍙</div>
-                <div class="item">CU<br>🍫</div>
-            </div><br><br><br>
+                <a href="store.html"><div class="item">매점<br>🍉</div></a>
+                <a href="편의점 페이지.html"><div class="item">GS25<br>🍙</div></a>
+                <a href="편의점 페이지.html"><div class="item">CU<br>🍫</div></a>
+            </div>
         </section>
 
 
-        <section id="section02">
-            <h1>#오늘의 추천</h1>
+        <section class="Section02" id="section02">
+            <h1 style="margin-left: 80px;">#오늘의 추천</h1>
         </section>
 
-        <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
+        <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px; width: 100%; margin: 0 ; padding-right: 0;;">
             <img src="logo_BLUE.svg" alt="HANDONG EATS" height="54" style="position: relative; top: 78px; left: 80px;">
-            <p style="position: absolute; left: 80px; font-size: 18px; position: relative; top: 159px;">2025-Summer 프론트엔드 입문</p>
-            <p style="font-size: 12px; position: relative; top: 164px;">
+            <p style=" font-size: 18px; position: relative; top: 159px; margin-left: 80px;">2025-Summer 프론트엔드 입문</p>
+            <p style="font-size: 12px; position: relative; top: 164px; margin-left: 80px;">
                 22300038 구본서 &nbsp; &nbsp; &nbsp;
                 22400020 고윤 &nbsp; &nbsp; &nbsp;
                 22001073 하엘림 &nbsp; &nbsp; &nbsp;
                 22400190 김채은 &nbsp; &nbsp; &nbsp;
                 22101034 박주현</p>
         </footer>
+
+        <script>
+            const bgImages = [
+                '맘스.jpg',
+                '그레이스더테이블.jpg',
+                '라운지.jpg',
+                '명성.jpg',
+                '버거킹.jpg',
+                '샐러디.jpg',
+                '학생식당.jpg',   
+            ];
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const idx = Math.floor(Math.random() * bgImages.length);
+                const sec = document.getElementById('section02');
+                sec.style.backgroundImage = `url(${bgImages[idx]})`;
+            });
+        </script>
     </Body>
 </html>
