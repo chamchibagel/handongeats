@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <Head>
+        <meta charset="UTF-8">
+        <title>Main</title>
+        <style>
+            header {
+                position: relative; height: 320px;
+                background: url(한동대학교.jpg); background-repeat: no-repeat;
+                background-size: cover; background-position: center;}
+
+            .logo img{height: 28px;}
+            .logo {position: absolute; top: 47px; left: 80px;}
+
+            .About {
+                position: absolute; top: 41px; left: 1232px;
+                display: flex;
+                width: 40px; height: 28px; gap: 10px;
+                padding: 8px 50px;
+                justify-content: center; align-items: center;
+                border-radius: 40px;
+                font-size: 18px; color: #FFF; font-weight: 500; font-family: Pretendard;
+            }
+            .About:hover {
+                position: absolute; top: 41px; left: 1232px;
+                display: flex;
+                width: 40px; height: 28px; gap: 10px;
+                padding: 8px 50px;
+                justify-content: center; align-items: center;
+                border-radius: 40px;
+                background-color: rgba(255, 255, 255, 0.20); backdrop-filter: blur(6px);
+                font-size: 18px; color: #FFF; font-weight: 600; font-family: Pretendard;            
+            }
+
+            .search {
+                position: absolute; top: 189px; left: 50%;
+                width: 964px; height: 62px;
+                display: flex;
+                align-items: center;
+                padding: 0 34px;
+                transform: translateX(-50%);
+                background-color: rgba(255, 255, 255, 0.30);
+                backdrop-filter: blur(10px);
+                border-radius: 30px;
+            }
+            .searchInput {
+                flex: 1; height: 100%;
+                background:transparent; color: white;
+                font-size: 22px; font-family: Pretendard;
+                padding-left: 14px;
+                outline: none; border: none;
+            }
+
+            h2 {
+                display: inline-block;
+                color: white; background-color: #1368BD;
+                font-size: 28px; font-weight: 800; font-family: Pretendard;
+                padding: 8px 50px; border-radius: 10px;
+            }
+            h2:hover{
+                display: inline-block;
+                color: white; background-color: #0c4681;
+                font-size: 28px; font-weight: 900; font-family: Pretendard;
+                padding: 8px 50px; border-radius: 10px;
+            }
+
+            .item {
+                width: 196px; height: 196px;
+                color: #121212;
+                text-align: center; font-size: 24px; font-weight: 700; font-family: Pretendard;
+                border-radius: 32px; border: 1px solid #1368BD;
+                background: linear-gradient(180deg, #FFF 0%, #F7F7F7 100%);
+                box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.25) inset, 2px 2px 8px 0px rgba(0, 0, 0, 0.50);}
+            .item:hover{
+                width: 196px; height: 196px;
+                color: #121212;
+                text-align: center; font-size: 24px; font-weight: 700; font-family: Pretendard;
+                border-radius: 32px; border: 1px solid #1368BD;
+                background: linear-gradient(180deg, #F7F7F7 0rgb(226, 226, 226)7F7 100%);
+                box-shadow: 5px 5px 9px 0px rgba(0, 0, 0, 0.40) inset, 3px 3px 9px 0px rgba(0, 0, 0, 0.75);
+            }
+
+            .container {background-color: #FFF; border: none; display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px;}
+
+            h1 {
+                display: inline-block;
+                color: #1368BD;  background-color: (255, 255, 255, 0.20); backdrop-filter: blur(6px);
+                font-size: 32px; font-weight: 800; font-family: Pretendard;
+                padding: 8px 50px; border-radius: 10px;}
+        </style>
+    </Head>
+    
+
+
+    <Body>
+        <header>
+            <div class="logo">
+                <img src="logo.svg" alt="HANDONG EATS">
+            </div>
+
+            <div class="About">
+                ABOUT <img src="arrow.svg" alt=">">
+            </div>
+
+            <p style="color: #FFF;font-family: Pretendard; font-size: 32px; font-weight: 800; 
+            position: relative; top: 110px; text-align: center;">한동대 식사와 관련된 모든 것을 검색해보세요!</p>
+
+            <div class="search">
+                <span class ="searchIcon"><img src="search icon.svg" alt="🔍"></span>
+                <input type="search" class="searchInput" placeholder="검색어를 입력">
+            </div>
+        </header>
+
+
+        <section id="section01" style="margin: 0 80px;">
+            <br><br><br><h2>#식당</h2>
+            <div class="container" id="Ritems">
+                <div class="item">학생식당<br>🥘</div>
+                <div class="item">맘스키친<br>🍛</div>
+                <div class="item">라운지<br>🍲</div>
+                <div class="item">그레이스더테이블<br>🍝</div>
+                <div class="item">명성<br>🍜</div>
+                <div class="item">버거킹<br>🍔</div>
+                <div class="item">샐러디<br>🥗</div>
+            </div><br><br><br>
+
+            <h2>#카페</h2>
+            <div class="container" id="Cintems">
+                <div class="item">애플인더트리<br>🥐</div>
+                <div class="item">맘스카페<br>🍹</div>
+                <div class="item">히즈빈스<br>☕</div>
+                <div class="item">예소드<br>🍕</div>
+                <div class="item">빽다방<br>🧋</div>
+            </div><br><br><br>
+
+            <h2>#매점·편의점</h2>
+            <div class="container" id="Mitem">
+                <div class="item">매점<br>🍉</div>
+                <div class="item">GS25<br>🍙</div>
+                <div class="item">CU<br>🍫</div>
+            </div><br><br><br>
+        </section>
+
+
+        <section id="section02">
+            <h1>#오늘의 추천</h1>
+        </section>
+
+        <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
+            <img src="logo_BLUE.svg" alt="HANDONG EATS" height="54" style="position: relative; top: 78px; left: 80px;">
+            <p style="position: absolute; left: 80px; font-size: 18px; position: relative; top: 159px;">2025-Summer 프론트엔드 입문<br>
+            <font style="font-size: 12px;">
+                22300038 구본서 &nbsp; &nbsp; &nbsp;
+                22400020 고윤 &nbsp; &nbsp; &nbsp;
+                22001073 하엘림 &nbsp; &nbsp; &nbsp;
+                22400190 김채은 &nbsp; &nbsp; &nbsp;
+                22101034 박주현 </font></p>
+        </footer>
+    </Body>
+</html>
