@@ -214,33 +214,34 @@
   let uniqueId = Date.now();
 
   cafeMenus[cafeName].forEach((menu, index) => {
-  const div = document.createElement("div");
-  let soldOutId = `soldout-${uniqueId}-${index}`;
+    const div = document.createElement("div");
+    let soldOutId = `soldout-${uniqueId}-${index}`;
 
-  if (menu.link) {
-    div.className = "menu-card link-card";
-    div.innerHTML = `
-      <a href="${menu.link}" target="_blank" 
-         style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
-        📦 ${menu.name}
-      </a>
-    `;
-  } else {
-    div.className = "menu-card";
-    div.innerHTML = `
-      <p><strong>${menu.name}</strong><br>${menu.price.toLocaleString()}원</p>
-      <button onclick="toggleSoldOut('${soldOutId}', this)">완판 처리</button>
-      <div id="${soldOutId}" class="sold-out" style="display: none; margin-top: 8px; color: green;">✅ 완판되었습니다</div>
-    `;
-  }
+    if (menu.link) {
+      div.className = "menu-card link-card";
+      div.innerHTML = `
+        <a href="${menu.link}" target="_blank" 
+           style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
+          📦 ${menu.name}
+        </a>
+      `;
+    } else {
+      div.className = "menu-card";
+      div.innerHTML = `
+        <p><strong>${menu.name}</strong><br>${menu.price.toLocaleString()}원</p>
+        <button onclick="toggleSoldOut('${soldOutId}', this)">완판 처리</button>
+        <div id="${soldOutId}" class="sold-out" style="display: none; margin-top: 8px; color: green;">✅ 완판되었습니다</div>
+      `;
+    }
 
-  container.appendChild(div);
-});
-
+    container.appendChild(div);
+  });
 
   document.querySelectorAll('.tab-header button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
+
+
 
     const cafeMenus = {
       "애인트": [ 
