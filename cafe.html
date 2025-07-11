@@ -196,42 +196,41 @@
   <p>편의점 메뉴 콘텐츠가 여기에 들어갑니다.</p>
 </div>
   <script>
-    function loadCafe(cafeName, btn) {
+   function loadCafe(cafeName, btn) {
   const container = document.getElementById("menu-container");
   container.innerHTML = '';
-  
- 
+
   document.getElementById("cafe-info").innerHTML = cafeHours[cafeName] || '';
 
+  let uniqueId = Date.now();
 
-  let uniqueId = Date.now(); // 고유 ID 생성 (함수 맨 위에 추가하면 더 좋음)
+  cafeMenus[cafeName].forEach((menu, index) => {
+    const div = document.createElement("div");
+    let soldOutId = `soldout-${uniqueId}-${index}`; // ✅ 여기에 추가
 
-cafeMenus[cafeName].forEach((menu, index) => {
-  const div = document.createElement("div");
-  div.className = "menu-card";
+    if (menu.link) {
+      div.className = "menu-card link-card";
+      div.innerHTML = `
+        <a href="${menu.link}" target="_blank" style="text-decoration: none; color: #0074D9;">
+          📦 ${menu.name}
+        </a>
+      `;
+    } else {
+      div.className = "menu-card";
+      div.innerHTML = `
+        <p><strong>${menu.name}</strong><br>${menu.price.toLocaleString()}원</p>
+        <button onclick="toggleSoldOut('${soldOutId}', this)">완판 처리</button>
+        <div id="${soldOutId}" class="sold-out" style="display: none; margin-top: 8px; color: green;">✅ 완판되었습니다</div>
+      `;
+    }
 
-if (menu.link) {
-  div.className = "menu-card link-card"; // 🔧 추가: 링크 카드만 별도 클래스
-  div.innerHTML = `
-    <a href="${menu.link}" target="_blank" style="...">
-      📦 ${menu.name}
-    </a>
-  `;
-} else {
-  div.className = "menu-card";  // ✅ 일반 메뉴카드는 기본 클래스만
-  div.innerHTML = `
-    <p><strong>${menu.name}</strong><br>${menu.price.toLocaleString()}원</p>
-    <button onclick="toggleSoldOut('${soldOutId}', this)">완판 처리</button>
-    <div id="${soldOutId}" class="sold-out" style="display: none; margin-top: 8px; color: green;">✅ 완판되었습니다</div>
-  `;
-}
+    container.appendChild(div);
+  });
 
-
-  container.appendChild(div);
-});
   document.querySelectorAll('.tab-header button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 }
+
     const cafeMenus = {
       "애인트": [ 
   { name: "오늘의 음료", price: 0 },
@@ -482,6 +481,8 @@ window.onload = () => {
     showMainTab('restaurant-tab', mainTabs[0]);
   }
 };
+  
+
 
   </script>
 
