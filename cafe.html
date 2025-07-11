@@ -455,9 +455,18 @@ function toggleSoldOut(id, btn) {
 }
 
     // 기본값 로딩
-   window.onload = () => {
-  showMainTab('restaurant-tab', document.querySelector('.main-tab'));
-  loadCafe("애인트", document.querySelector('.tab-header button'));
+  window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tabParam = urlParams.get("tab");
+
+  if (tabParam === "cafe") {
+    showMainTab('cafe-tab', document.querySelectorAll('.main-tab')[1]);
+    loadCafe("애인트", document.querySelector('.tab-header button'));
+  } else if (tabParam === "store") {
+    showMainTab('store-tab', document.querySelectorAll('.main-tab')[2]);
+  } else {
+    showMainTab('restaurant-tab', document.querySelectorAll('.main-tab')[0]);
+  }
 };
   </script>
 
