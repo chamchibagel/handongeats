@@ -451,18 +451,19 @@ function toggleSoldOut(id, btn) {
 window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tabParam = urlParams.get("tab");
+  const cafeParam = urlParams.get("cafe");
 
-  if (tabParam === "cafe") {
+  if (tabParam === "cafe" || cafeParam) {
+    // 카페 탭 활성화
     showMainTab('cafe-tab', document.querySelectorAll('.main-tab')[1]);
 
-    // ✅ 탭이 보인 다음에 loadCafe를 실행해야 하므로 setTimeout으로 살짝 늦춤
+    // 특정 카페 자동 로딩
     setTimeout(() => {
-      loadCafe("애인트", document.querySelector('.tab-header button'));
+      const cafeToLoad = cafeParam || "애인트"; // 기본은 애인트
+      const btnList = document.querySelectorAll('.tab-header button');
+      const btn = Array.from(btnList).find(b => b.textContent === cafeToLoad);
+      if (btn) loadCafe(cafeToLoad, btn);
     }, 0);
-  } else if (tabParam === "store") {
-    showMainTab('store-tab', document.querySelectorAll('.main-tab')[2]);
-  } else {
-    showMainTab('restaurant-tab', document.querySelectorAll('.main-tab')[0]);
   }
 };
   </script>
