@@ -453,19 +453,23 @@ window.onload = () => {
   const tabParam = urlParams.get("tab");
   const cafeParam = urlParams.get("cafe");
 
-  if (tabParam === "cafe" || cafeParam) {
-    // 카페 탭 활성화
-    showMainTab('cafe-tab', document.querySelectorAll('.main-tab')[1]);
+  const mainTabs = document.querySelectorAll('.main-tab');
 
-    // 특정 카페 자동 로딩
+  if (tabParam === "cafe") {
+    showMainTab('cafe-tab', mainTabs[1]);  // ✔ #카페 탭
     setTimeout(() => {
-      const cafeToLoad = cafeParam || "애인트"; // 기본은 애인트
-      const btnList = document.querySelectorAll('.tab-header button');
-      const btn = Array.from(btnList).find(b => b.textContent === cafeToLoad);
-      if (btn) loadCafe(cafeToLoad, btn);
+      const targetCafe = cafeParam || "애인트";
+      const cafeButtons = document.querySelectorAll('.tab-header button');
+      const matched = Array.from(cafeButtons).find(btn => btn.textContent === targetCafe);
+      if (matched) loadCafe(targetCafe, matched);
     }, 0);
+  } else if (tabParam === "store") {
+    showMainTab('store-tab', mainTabs[2]);
+  } else {
+    showMainTab('restaurant-tab', mainTabs[0]);
   }
 };
+
   </script>
 
         <footer style="background-color: #F2F4F7; color: #1368BD; height: 317px;">
