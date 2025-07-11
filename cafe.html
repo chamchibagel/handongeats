@@ -29,7 +29,8 @@
   }
 
   header img {
-    height: 60px;
+    width: 120px;
+    height:auto;
     object-fit: contain;
   }
 
@@ -219,10 +220,13 @@
     if (menu.link) {
       div.className = "menu-card link-card";
       div.innerHTML = `
-        <a href="${menu.link}" target="_blank" style="text-decoration: none; color: #0074D9;">
-          📦 ${menu.name}
-        </a>
-      `;
+      div.innerHTML = `
+  <a href="${menu.link}" target="_blank" 
+     style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
+    📦 ${menu.name}
+  </a>
+`;
+
     } else {
       div.className = "menu-card";
       div.innerHTML = `
@@ -475,8 +479,8 @@ window.onload = () => {
 
   const mainTabs = document.querySelectorAll('.main-tab');
 
-  if (tabParam === "cafe") {
-    showMainTab('cafe-tab', mainTabs[1]);  // ✔ #카페 탭
+  if (tabParam === "cafe" || cafeParam) {
+    showMainTab('cafe-tab', mainTabs[1]);  // ✔ 카페 탭 열기
     setTimeout(() => {
       const targetCafe = cafeParam || "애인트";
       const cafeButtons = document.querySelectorAll('.tab-header button');
@@ -489,6 +493,7 @@ window.onload = () => {
     showMainTab('restaurant-tab', mainTabs[0]);
   }
 };
+
   
 
 
