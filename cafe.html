@@ -455,13 +455,17 @@ function toggleSoldOut(id, btn) {
 }
 
     // 기본값 로딩
-  window.onload = () => {
+window.onload = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const tabParam = urlParams.get("tab");
 
   if (tabParam === "cafe") {
     showMainTab('cafe-tab', document.querySelectorAll('.main-tab')[1]);
-    loadCafe("애인트", document.querySelector('.tab-header button'));
+
+    // ✅ 탭이 보인 다음에 loadCafe를 실행해야 하므로 setTimeout으로 살짝 늦춤
+    setTimeout(() => {
+      loadCafe("애인트", document.querySelector('.tab-header button'));
+    }, 0);
   } else if (tabParam === "store") {
     showMainTab('store-tab', document.querySelectorAll('.main-tab')[2]);
   } else {
