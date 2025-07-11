@@ -438,27 +438,30 @@ function showMainTab(tabId, btn) {
   }
 
   // ✅ URL 파라미터에 따라 탭 자동 실행
-  window.onload = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const tabParam = urlParams.get("tab");
-    const cafeParam = urlParams.get("cafe");
-    const mainTabs = document.querySelectorAll('.main-tab');
+window.onload = () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tabParam = urlParams.get("tab");
+  const cafeParam = urlParams.get("cafe");
+  const mainTabs = document.querySelectorAll('.main-tab');
 
-    if (tabParam === "cafe" || cafeParam) {
-      showMainTab('cafe-tab', mainTabs[1]);
+  if (tabParam === "cafe" || cafeParam) {
+    showMainTab('cafe-tab', mainTabs[1]);
 
-      setTimeout(() => {
-        const targetCafe = cafeParam || "애인트";
-        const cafeButtons = document.querySelectorAll('.tab-header button');
-        const matched = Array.from(cafeButtons).find(btn => btn.textContent.trim() === targetCafe);
-        if (matched) loadCafe(targetCafe, matched);
-      }, 0);
-    } else if (tabParam === "store") {
-      showMainTab('store-tab', mainTabs[2]);
-    } else {
-      showMainTab('restaurant-tab', mainTabs[0]);
-    }
-  };
+    setTimeout(() => {
+      const targetCafe = cafeParam || "애인트";
+      const cafeButtons = document.querySelectorAll('.tab-header button');
+      const matched = Array.from(cafeButtons).find(btn =>
+        btn.getAttribute("onclick")?.includes(`loadCafe('${targetCafe}'`)
+      );
+      if (matched) loadCafe(targetCafe, matched);
+    }, 0);
+  } else if (tabParam === "store") {
+    showMainTab('store-tab', mainTabs[2]);
+  } else {
+    showMainTab('restaurant-tab', mainTabs[0]);
+  }
+};
+
 
   // ✨ cafeMenus, cafeHours는 이전처럼 위에 정의되어 있어야 함
 </script>
