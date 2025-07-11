@@ -16,8 +16,6 @@
     width: 100%;
     flex-shrink: 0;
     background-color: #fff;
-    border: 2px solid #1368BD;
-    border-radius: 10px;
     padding: 20px 40px;
     margin-bottom: 20px;
   }
@@ -105,13 +103,7 @@
     margin-bottom: 10px;
   }
 
-  /* ⬆️ 카페 운영시간 안내 */
-  #cafe-info {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
+
  .main-tabs {
   display: flex;
   justify-content: flex-end;  /* ✅ 오른쪽 정렬 */
@@ -175,6 +167,7 @@
     <button onclick="loadCafe('빽다방', this)">빽다방</button>
     <button onclick="loadCafe('예소드', this)">예소드</button>
   </div>
+   <div id="cafe-info" style="text-align: center; font-weight: bold; margin: 10px 0; line-height: 1.6;"></div>
 
   <div class="menu-grid" id="menu-container">
     <!-- 메뉴 카드가 여기에 들어감 -->
