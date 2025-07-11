@@ -4,243 +4,208 @@
   <meta charset="UTF-8">
   <title>Handong Eats - 카페</title>
   <style>
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
 
-  /* ⬆️ 상단 헤더 (로고와 제목) */
-  header {
-    height: 120px;
-    width: 100%;
-    flex-shrink: 0;
-    background-color: #fff;
-    padding: 20px 40px;
-    margin-bottom: 20px;
-  }
+    header {
+      height: 120px;
+      width: 100%;
+      flex-shrink: 0;
+      background-color: #fff;
+      padding: 20px 40px;
+      margin-bottom: 20px;
+    }
 
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1280px;
-    margin: 0 auto;
-  }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
 
-  header img {
-    width: 160px;
-    height:auto;
-    object-fit: contain;
-  }
+    header img {
+      width: 160px;
+      height: auto;
+      object-fit: contain;
+    }
 
-  h5 {
-    color: #1368BD;
-    font-size: 24px;
-    margin: 0;
-  }
+    .tab-header {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
 
- 
+    .tab-header button {
+      all: unset;
+      padding: 12px 24px;
+      background-color: white;
+      color: #0074D9;
+      font-weight: 600;
+      border: 2px solid #0074D9;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
 
+    .tab-header button:hover {
+      background-color: #e6f0fa;
+    }
 
+    .tab-header button.active {
+      background-color: #0074D9;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 116, 217, 0.2);
+    }
 
-  /* ⬆️ 카페 내부 탭 버튼 (애인트, 맘스카페 등) */
-  .tab-header {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+    }
 
-  .tab-header button {
-    all: unset;
-    padding: 12px 24px;
-    background-color: white;
-    color: #0074D9;
-    font-weight: 600;
-    border: 2px solid #0074D9;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-  }
+    .menu-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 16px;
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+      text-align: center;
+    }
 
-  .tab-header button:hover {
-    background-color: #e6f0fa;
-  }
+    .menu-card:hover {
+      transform: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    }
 
-  .tab-header button.active {
-    background-color: #0074D9;
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 116, 217, 0.2);
-  }
+    .link-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
 
-  /* ⬆️ 메뉴 카드 스타일 */
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
-  }
+    .menu-card strong {
+      display: block;
+      margin-bottom: 10px;
+    }
 
-  .menu-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 16px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    text-align: center;
-  }
+    .main-tabs {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin: 20px 0;
+    }
 
-.menu-card:hover {
-  transform: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-}
+    .main-tab {
+      padding: 12px 24px;
+      background-color: white;
+      color: #1368BD;
+      font-weight: bold;
+      border: 2px solid #1368BD;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
 
-/* 링크 카드에만 hover 효과 유지 */
-.link-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
+    .main-tab:hover {
+      background-color: #e6f0fa;
+    }
 
-  .menu-card strong {
-    display: block;
-    margin-bottom: 10px;
-  }
-
-
- .main-tabs {
-  display: flex;
-  justify-content: flex-end;  /* ✅ 오른쪽 정렬 */
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.main-tab {
-  padding: 12px 24px;
-  background-color: white;
-  color: #1368BD;
-  font-weight: bold;
-  border: 2px solid #1368BD;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.main-tab:hover {
-  background-color: #e6f0fa;
-}
-
-.main-tab.active {
-  background-color: #1368BD;
-  color: white;
-}
-
+    .main-tab.active {
+      background-color: #1368BD;
+      color: white;
+    }
   </style>
 </head>
 <body>
 <header>
   <div class="header">
-    <!-- 기존 텍스트 삭제 -->
-    <!-- <div style="font-size: 28px; font-weight: bold; color: #1368BD;">handong eats</div> -->
-
-    <!-- ⬇️ 이미지로 대체 -->
     <img src="logo_BLUE.svg" alt="Handong Eats 로고">
-
     <div class="main-tabs">
-        <button class="main-tab" onclick="location.href='cafeteria.html'">#식당</button>
+      <button class="main-tab" onclick="location.href='cafeteria.html'">#식당</button>
       <button class="main-tab" onclick="location.href='카페.html'">#카페</button>
-     <button class="main-tab" onclick="location.href='매점.html'">#매점·편의점</button>
+      <button class="main-tab" onclick="location.href='매점.html'">#매점·편의점</button>
     </div>
   </div>
 </header>
 
-
-
-
-  
 <div id="restaurant-tab" style="display:none;">
   <h2># 식당</h2>
-  <!-- 식당 콘텐츠가 여기에 들어감 -->
   <p>식당 메뉴 콘텐츠가 여기에 들어갑니다.</p>
 </div>
+
 <div id="cafe-tab">
   <div class="tab-header">
-    <button class="active" onclick="loadCafe('애인트', this)">애플인더트리</button>
+    <button onclick="loadCafe('애인트', this)">애플인더트리</button>
     <button onclick="loadCafe('맘스카페', this)">맘스카페</button>
     <button onclick="loadCafe('히즈빈스', this)">히즈빈스</button>
     <button onclick="loadCafe('빽다방', this)">빽다방</button>
     <button onclick="loadCafe('예소드', this)">예소드</button>
   </div>
 
-  <!-- ✅ 여기서부터 각 카페 id를 미리 선언 -->
   <div id="애인트"></div>
   <div id="맘스카페"></div>
   <div id="히즈빈스"></div>
   <div id="빽다방"></div>
   <div id="예소드"></div>
 
-  <!-- 운영시간 정보 -->
   <div id="cafe-info" style="
     text-align: left;
     font-weight: normal;
     margin: 10px 0 20px 20px;
     line-height: 1.6;
     color: #1368BD;
-    font-size: 14px;
-  "></div>
+    font-size: 14px;"></div>
 
-  <div class="menu-grid" id="menu-container">
-    <!-- 메뉴 카드가 여기에 들어감 -->
-  </div>
-  </div>
- 
+  <div class="menu-grid" id="menu-container"></div>
+</div>
 
 <div id="store-tab" style="display:none;">
   <h2># 매점 · 편의점</h2>
-  <!--편의점.메뉴 콘텐츠 여기에 들어감 -->
   <p>편의점 메뉴 콘텐츠가 여기에 들어갑니다.</p>
 </div>
-  <script>
-   function loadCafe(cafeName, btn) {
-  const container = document.getElementById("menu-container");
-  container.innerHTML = '';
 
-  document.getElementById("cafe-info").innerHTML = cafeHours[cafeName] || '';
+<script>
+  function loadCafe(cafeName, btn) {
+    const container = document.getElementById("menu-container");
+    container.innerHTML = '';
+    document.getElementById("cafe-info").innerHTML = cafeHours[cafeName] || '';
+    let uniqueId = Date.now();
 
-  let uniqueId = Date.now();
+    cafeMenus[cafeName].forEach((menu, index) => {
+      const div = document.createElement("div");
+      let soldOutId = `soldout-${uniqueId}-${index}`;
 
-  cafeMenus[cafeName].forEach((menu, index) => {
-    const div = document.createElement("div");
-    let soldOutId = `soldout-${uniqueId}-${index}`;
+      if (menu.link) {
+        div.className = "menu-card link-card";
+        div.innerHTML = `
+          <a href="${menu.link}" target="_blank"
+             style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
+            📦 ${menu.name}
+          </a>
+        `;
+      } else {
+        div.className = "menu-card";
+        div.innerHTML = `
+          <p><strong>${menu.name}</strong><br>${menu.price.toLocaleString()}원</p>
+          <button onclick="toggleSoldOut('${soldOutId}', this)">완판 처리</button>
+          <div id="${soldOutId}" class="sold-out" style="display: none; margin-top: 8px; color: green;">✅ 완판되었습니다</div>
+        `;
+      }
 
-    if (menu.link) {
-      div.className = "menu-card link-card";
-      div.innerHTML = `
-        <a href="${menu.link}" target="_blank" 
-           style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
-          📦 ${menu.name}
-        </a>
-      `;
-    } else {
-      div.className = "menu-card";
-      div.innerHTML = `
-        <p><strong>${menu.name}</strong><br>${menu.price.toLocaleString()}원</p>
-        <button onclick="toggleSoldOut('${soldOutId}', this)">완판 처리</button>
-        <div id="${soldOutId}" class="sold-out" style="display: none; margin-top: 8px; color: green;">✅ 완판되었습니다</div>
-      `;
-    }
+      container.appendChild(div);
+    });
 
-    container.appendChild(div);
-  });
-
-  document.querySelectorAll('.tab-header button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-
+    document.querySelectorAll('.tab-header button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
 
 
     const cafeMenus = {
@@ -451,64 +416,64 @@ const cafeHours = {
       
 
 function showMainTab(tabId, btn) {
-  document.querySelectorAll('#restaurant-tab, #cafe-tab, #store-tab').forEach(tab => {
-    tab.style.display = 'none';
-  });
+    document.querySelectorAll('#restaurant-tab, #cafe-tab, #store-tab').forEach(tab => {
+      tab.style.display = 'none';
+    });
 
-  document.getElementById(tabId).style.display = 'block';
+    document.getElementById(tabId).style.display = 'block';
 
-  document.querySelectorAll('.main-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-function toggleSoldOut(id, btn) {
-  const statusDiv = document.getElementById(id);
-  if (statusDiv.style.display === "none") {
-    statusDiv.style.display = "block";
-    btn.textContent = "되돌리기";
-  } else {
-    statusDiv.style.display = "none";
-    btn.textContent = "완판 처리";
+    document.querySelectorAll('.main-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
   }
-}
 
-    // 기본값 로딩
-window.onload = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const tabParam = urlParams.get("tab");
-  const cafeParam = urlParams.get("cafe");
-
-  const mainTabs = document.querySelectorAll('.main-tab');
-
-  if (tabParam === "cafe" || cafeParam) {
-    showMainTab('cafe-tab', mainTabs[1]);  // ✔ 카페 탭 열기
-    setTimeout(() => {
-      const targetCafe = cafeParam || "애인트";
-      const cafeButtons = document.querySelectorAll('.tab-header button');
-      const matched = Array.from(cafeButtons).find(btn => btn.textContent === targetCafe);
-      if (matched) loadCafe(targetCafe, matched);
-    }, 0);
-  } else if (tabParam === "store") {
-    showMainTab('store-tab', mainTabs[2]);
-  } else {
-    showMainTab('restaurant-tab', mainTabs[0]);
+  function toggleSoldOut(id, btn) {
+    const statusDiv = document.getElementById(id);
+    if (statusDiv.style.display === "none") {
+      statusDiv.style.display = "block";
+      btn.textContent = "되돌리기";
+    } else {
+      statusDiv.style.display = "none";
+      btn.textContent = "완판 처리";
+    }
   }
-};
 
-  
+  // ✅ URL 파라미터에 따라 탭 자동 실행
+  window.onload = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam = urlParams.get("tab");
+    const cafeParam = urlParams.get("cafe");
+    const mainTabs = document.querySelectorAll('.main-tab');
 
+    if (tabParam === "cafe" || cafeParam) {
+      showMainTab('cafe-tab', mainTabs[1]);
 
-  </script>
+      setTimeout(() => {
+        const targetCafe = cafeParam || "애인트";
+        const cafeButtons = document.querySelectorAll('.tab-header button');
+        const matched = Array.from(cafeButtons).find(btn => btn.textContent.trim() === targetCafe);
+        if (matched) loadCafe(targetCafe, matched);
+      }, 0);
+    } else if (tabParam === "store") {
+      showMainTab('store-tab', mainTabs[2]);
+    } else {
+      showMainTab('restaurant-tab', mainTabs[0]);
+    }
+  };
 
-        <footer style="background-color: #F2F4F7; color: #1368BD; height: 300px; width: 100%; margin: 0 ; padding-right: 0;;">
-            <img src="logo_BLUE.svg" alt="HANDONG EATS" style="position: relative; width: 280px; top: 68px; left: 80px;">
-            <p style=" font-size: 18px; position: relative; top: 120px; margin-left: 80px;">2025-Summer 프론트엔드 입문</p>
-            <p style="font-size: 12px; position: relative; top: 130px; margin-left: 80px;">
-                22300038 구본서 &nbsp; &nbsp; &nbsp;
-                22400020 고윤 &nbsp; &nbsp; &nbsp;
-                22001073 하엘림 &nbsp; &nbsp; &nbsp;
-                22400190 김채은 &nbsp; &nbsp; &nbsp;
-                22101034 박주현</p>
-        </footer>
-        </footer>
+  // ✨ cafeMenus, cafeHours는 이전처럼 위에 정의되어 있어야 함
+</script>
+
+<!-- Footer -->
+<footer style="background-color: #F2F4F7; color: #1368BD; height: 300px; width: 100%; margin: 0;">
+  <img src="logo_BLUE.svg" alt="HANDONG EATS" style="position: relative; width: 280px; top: 68px; left: 80px;">
+  <p style="font-size: 18px; position: relative; top: 120px; margin-left: 80px;">2025-Summer 프론트엔드 입문</p>
+  <p style="font-size: 12px; position: relative; top: 130px; margin-left: 80px;">
+    22300038 구본서 &nbsp;&nbsp;
+    22400020 고윤 &nbsp;&nbsp;
+    22001073 하엘림 &nbsp;&nbsp;
+    22400190 김채은 &nbsp;&nbsp;
+    22101034 박주현
+  </p>
+</footer>
 </body>
 </html>
