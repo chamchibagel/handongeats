@@ -13,25 +13,54 @@
             .logo img{height: 28px;}
             .logo {position: absolute; top: 47px; left: 80px;}
 
-            .About {
-                position: absolute; top: 41px; left: 1232px;
-                display: flex;
-                width: 40px; height: 28px; gap: 10px;
-                padding: 8px 50px;
-                justify-content: center; align-items: center;
-                border-radius: 40px;
-                font-size: 18px; color: #FFF; font-weight: 500;
-            }
-            .About:hover {
-                position: absolute; top: 41px; margin-left: auto;
-                display: flex;
-                width: 40px; height: 28px; gap: 10px;
-                padding: 8px 50px;
-                justify-content: center; align-items: center;
-                border-radius: 40px;
-                background-color: rgba(255, 255, 255, 0.20); backdrop-filter: blur(6px);
-                font-size: 18px; color: #FFF; font-weight: 600;         
-            }
+            .AboutWrapper {
+    position: absolute;
+    top: 41px;
+    left: 1232px;
+}
+
+.About {
+    display: flex;
+    width: auto; /* 40px는 너무 작음 */
+    height: 28px;
+    gap: 10px;
+    padding: 8px 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    font-size: 18px;
+    color: #FFF;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.About:hover {
+    background-color: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(6px);
+    font-weight: 600;
+}
+
+.modal {
+    display: none;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    font-family: Pretendard, sans-serif;
+    max-width: 320px;
+    width: max-content;
+    z-index: 100;
+    color: #121212;
+    word-wrap: break-word;
+}
+
+.AboutWrapper:hover .modal {
+    display: block;
+}
+
 
             .search {
                 position: absolute; top: 189px; left: 50%;
@@ -103,17 +132,17 @@
                 <img src="logo.svg" alt="HANDONG EATS">
             </div>
 
-            <div class="About">
-                ABOUT <img src="arrow.svg" alt=">">
-            </div>
+           <div class="AboutWrapper">
+    <div class="About">
+        ABOUT <img src="arrow.svg" alt=">">
+    </div>
+    <div class="modal" id="aboutModal">
+        <h2>HANDONG EATS</h2>
+        <p>한동대학교 학생들을 위한 식사 정보 포털입니다.<br>
+        다양한 식당과 카페 정보를 확인하세요!</p>
+    </div>
+</div>
 
-            <p style="color: #FFF;font-family: Pretendard; font-size: 32px; font-weight: 800; 
-            position: relative; top: 110px; text-align: center;">한동대 식사와 관련된 모든 것을 검색해보세요!</p>
-
-            <div class="search">
-                <span class ="searchIcon"><img src="search icon.svg" alt="🔍"></span>
-                <input type="search" class="searchInput" placeholder="검색어를 입력">
-            </div>
         </header>
 
 
@@ -129,14 +158,14 @@
                 <a href="salad.html"><div class="item">샐러디<br>🥗</div></a>
             </div>
 
-         <a href="cafe.html"><h2>#카페</h2></a>
-<div class="container" id="Cintems">
-  <a href="cafe.html"><div class="item">애플인더트리<br>🥐</div></a>
-  <a href="cafe.html"><div class="item">맘스카페<br>🍹</div></a>
-  <a href="cafe.html"><div class="item">히즈빈스<br>☕</div></a>
-  <a href="cafe.html"><div class="item">예소드<br>🍕</div></a>
-  <a href="cafe.html"><div class="item">빽다방<br>🧋</div></a>
-</div>
+            <a href="cafe.html?tab=cafe"><h2>#카페</h2></a>
+            <div class="container" id="Cintems">
+                <div class="item">애플인더트리<br>🥐</div>
+                <div class="item">맘스카페<br>🍹</div>
+                <div class="item">히즈빈스<br>☕</div>
+                <div class="item">예소드<br>🍕</div>
+                <div class="item">빽다방<br>🧋</div>
+            </div>
 
             <a href="매점.html"><h2>#매점·편의점</h2></a>
             <div class="container" id="Mitem">
