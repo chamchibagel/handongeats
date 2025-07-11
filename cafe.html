@@ -29,7 +29,7 @@
   }
 
   header img {
-    width: 120px;
+    width: 140px;
     height:auto;
     object-fit: contain;
   }
@@ -216,15 +216,15 @@
   cafeMenus[cafeName].forEach((menu, index) => {
     const div = document.createElement("div");
     let soldOutId = `soldout-${uniqueId}-${index}`; // ✅ 여기에 추가
-
-    if (menu.link) {
-      div.className = "menu-card link-card";
-      div.innerHTML = `
-      div.innerHTML = `
-  <a href="${menu.link}" target="_blank" 
-     style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
-    📦 ${menu.name}
-  </a>
+if (menu.link) {
+  div.className = "menu-card link-card";
+  div.innerHTML = `
+    <a href="${menu.link}" target="_blank" 
+       style="text-decoration: none; color: #0074D9; display: inline-block; margin: 0 auto;">
+      📦 ${menu.name}
+    </a>
+  `;
+}
 `;
 
     } else {
