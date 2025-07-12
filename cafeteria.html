@@ -31,39 +31,39 @@
     }
 
     .category-boxes {
-  display: flex;
-  gap: 12px;
-}
+      display: flex;
+      gap: 12px;
+    }
 
-.category {
-  padding: 8px 16px;
-  border: 2px solid #1368BD;
-  border-radius: 12px;
-  background-color: #FCFDFF;
-  font-family: Pretendard;
-  font-size: 16px;
-  font-weight: 600;
-  color: #1368BD;
-  white-space: nowrap;
-  text-align: center;
-  transition: 0.3s;
-}
+    .category {
+      padding: 8px 16px;
+      border: 2px solid #1368BD;
+      border-radius: 12px;
+      background-color: #FCFDFF;
+      font-family: Pretendard;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1368BD;
+      white-space: nowrap;
+      text-align: center;
+      transition: 0.3s;
+    }
 
-#blue {
-  background-color: #1368BD;
-}
+    #blue {
+      background-color: #1368BD;
+    }
 
-#blue > a {
-  text-decoration: none;
-  color: white;
-}
+    #blue > a {
+      text-decoration: none;
+      color: white;
+    }
 
-#nonblue > a {
-  text-decoration: none;
-  color: #1368BD;
-}
+    #nonblue > a {
+      text-decoration: none;
+      color: #1368BD;
+    }
 
-     nav {
+    nav {
       width: 100%;
       height: 54px;
       display: flex;
@@ -95,6 +95,7 @@
       color: white;
       font-weight: bold;
     }
+
     h2 {
       margin: 40px 40px 10px;
       color: #1368BD;
@@ -111,7 +112,6 @@
       flex: 1;
     }
 
-    
     .menu-card {
       width: 196px;
       height: 196px;
@@ -122,13 +122,16 @@
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       padding-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .menu-card img {
       margin-top: 10px;
       width: 55%;
       height: 70px;
-      
     }
 
     .menu-info {
@@ -140,6 +143,7 @@
       font-size: 16px;
       margin-bottom: 6px;
     }
+
     .menu-long {
       font-weight: bold;
       font-size: 10px;
@@ -150,12 +154,14 @@
       font-size: 14px;
       color: #333;
       margin-bottom: 5px;
+      font-weight: normal !important;
     }
 
     .sold-out {
       color: black;
       font-size: 15px;
       margin-top: 5px;
+      font-weight: normal !important;
     }
 
     .footer {
@@ -181,11 +187,14 @@
       font-size: 13px;
       margin-top: 4px;
     }
-    p{color: #1368BD 
-    ; font-weight: 700;}
 
+    p {
+      color: #1368BD;
+      font-weight: 700;
+    }
   </style>
 </head>
+
   <!-- 네비게이션 -->
  <div class="top-nav">
    <div class="logo"><img src="logo_BLUE.svg" alt=""></div>
@@ -218,7 +227,7 @@
     <div class="menu-card">
       <p>든든한동</p>
          <div data-id="cafmenu2name" class="menu-long">DINNER-밥,콩나물국,순대볶음,알감자조림,양파오이생채,김치</div>
-        <img src="dinner.png">
+      <img src="dinner.png">
           <div data-id="cafmenu2price" class="menu-price">4,500원</div>
       <div data-id="cafmenu2stock" class="sold-out">재고있음</div>
         </div>
