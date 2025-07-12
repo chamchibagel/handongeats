@@ -127,7 +127,9 @@
 <body>
 <header>
   <div class="header">
-    <img src="logo_BLUE.svg" alt="Handong Eats 로고">
+ <a href="index.html">
+      <img src="logo_BLUE.svg" alt="Handong Eats 로고">
+    </a>
     <div class="main-tabs">
       <button class="main-tab" onclick="location.href='cafeteria.html'">#식당</button>
       <button class="main-tab" onclick="location.href='cafe.html?tab=cafe&cafe=애인트'">#카페</button>
@@ -135,10 +137,7 @@
     </div>
   </div>
 </header>
-  <nav>
-  <a href="cafeteria.html" style="background-color:#000; color:white">편의점</a>
-  <a href="moms-kitchen.html">매점</a>
-</nav>
+
 
 <div id="restaurant-tab" style="display:none;">
   <h2># 식당</h2>
@@ -482,34 +481,6 @@ window.onload = () => {
     22101034 박주현
   </p>
 </footer>
-  <script>
-
-  function toggleSoldOut(id) {
-    const status = document.getElementById(id);
-    const isSoldOut = status.style.display === "none";
-    status.style.display = isSoldOut ? "block" : "none";
-
-    // ✅ Firebase에 상태 저장
-    firebase.database().ref("soldout/" + id).set(isSoldOut);
-  }
-
-  // ✅ 페이지 로딩 시 Firebase에서 상태 불러오기
-  window.onload = function() {
-    const ref = firebase.database().ref("soldout");
-    ref.once("value", (snapshot) => {
-      const soldOutData = snapshot.val();
-      if (soldOutData) {
-        for (const id in soldOutData) {
-          const isSoldOut = soldOutData[id];
-          const status = document.getElementById(id);
-          if (status) {
-            status.style.display = isSoldOut ? "block" : "none";
-          }
-        }
-      }
-    });
-  };
-</script>
-
+  
 </body>
 </html>
