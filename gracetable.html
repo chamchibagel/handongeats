@@ -1,128 +1,274 @@
-<html>
-    <head> 
-        <style>
-            h5{color: #1368BD;}
-            #item{width:196px;height:196px;color: #000;
-            text-align: center;font-family: Pretendard;
-            font-size: 24px;font-style: normal;
-            font-weight: 600;line-height: normal;
-            position: relative; border-radius: 32px;
-            border: 1px solid #1368BD; background: #FCFDFF; 
-            margin: 20px;}
-            #menu {display: flex; flex-wrap: wrap;
-            justify-content: center;}
-            p{font-size: x-small;}
-            header{width: 1440px; height: 120px;
-            flex-shrink: 0; background-color:#FFFF;
-            border-color: #1368BD;border-radius: 10px;border-bottom: 1px solid #ccc;}
-            nav{width: 100%; height: 54px; 
-            display:flex;flex-shrink: 0; flex-wrap:nowrap;
-            color: #000; padding:10px; font-family: Pretendard; 
-            font-size: 22px; font-style: normal; font-weight: 500;
-            line-height: normal; padding:5px; border-radius: 10px;}
-            nav a {flex: 1; flex-shrink: 0;display: inline-block; border: 1px solid black; 
-                border-radius: 0px; text-decoration: none; text-align: center;
-                color: #000; background-color: #FCFDFF; transition: 0.2s; font-size: 20px;
-                border-radius: 10px;}
-            img{align-items: center;}
-            footer{width: 1440px;height: 317px;
-            flex-shrink: 0;background: #F2F4F7}
-            #footnote{color: #1368BD;text-align:left;
-            font-family: Pretendard;font-size: 18px;
-            font-style: normal;font-weight: 500;
-            line-height: normal;}
-            header {width: 100%; background-color: #fff;padding: 20px 40px;}
-            .header {display: flex;  align-items: center;justify-content: space-between; 
-            max-width: 1280px; margin: 0 auto;}
-            header img {height: 60px; object-fit: contain;}
-            .category-boxes {display: flex;gap: 12px;}
-            .category {padding: 8px 16px;border: 2px solid #1368BD;border-radius: 12px;background-color: #FCFDFF;font-family: Pretendard;
-            font-size: 16px;font-weight: 600;color: #1368BD;white-space: nowrap;text-align: center;transition: 0.3s}
-            #blue{background-color: #1368BD}
-            #blue>a{text-decoration:none; color:white;}
-            #nonblue>a{text-decoration: none; color:#1368BD}
-        </style>
-        <title>학생식당</title>    
-    </head>
-    <Body>
-    <header>
-    <div class="header">
-         <img src="logo_BLUE.svg"  style="width:175px;">
-    <div class="category-boxes">
-    <div id="blue" class="category"><a href="">#식당</a></div>
-    <div id="nonblue"class="category"><a href="">#카페</a></div>
-    <div id="nonblue"class="category"><a href="">#매점*편의점</a></div>
-    </div>
-    </div>
-    </header>
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>학생식당 메뉴</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <nav>
-        <a href="cafeteria.html">학생식당</a>
-        <a href="moms-kitchen.html">맘스키친</a>
-        <a href="handong-lounge.html">라운지</a>
-        <a style="background-color:#000; color:white" href="gracetable.html">그래이스 더 테이블</a>
-        <a href="myung-sung.html">명성</a>
-        <a href="burger-king.html">버거킹</a>
-        <a href="salad.html">셀러디</a>
-    </nav>
-        <h5>영업시간= 주중-11:00~19:30/토 11:00~14:30</h5>
+    h5{color: #1368BD;}
+
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background-color: white;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #1368BD;
+    }
+
+    .category-boxes {
+  display: flex;
+  gap: 12px;
+}
+
+.category {
+  padding: 8px 16px;
+  border: 2px solid #1368BD;
+  border-radius: 12px;
+  background-color: #FCFDFF;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1368BD;
+  white-space: nowrap;
+  text-align: center;
+  transition: 0.3s;
+}
+
+#blue {
+  background-color: #1368BD;
+}
+
+#blue > a {
+  text-decoration: none;
+  color: white;
+}
+
+#nonblue > a {
+  text-decoration: none;
+  color: #1368BD;
+}
+
+     nav {
+      width: 100%;
+      height: 54px;
+      display: flex;
+      flex-wrap: nowrap;
+      padding: 5px;
+      font-size: 22px;
+      font-weight: 500;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    nav a {
+      flex: 1;
+      flex-shrink: 0;
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      color: #000;
+      background-color: #FCFDFF;
+      transition: 0.2s;
+      font-size: 20px;
+      padding: 10px 0;
+    }
+
+    nav a.active {
+      background-color: black;
+      color: white;
+      font-weight: bold;
+    }
+    h2 {
+      margin: 40px 40px 10px;
+      color: #1368BD;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+    }
+
+    .menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: left;
+      padding: 40px;
+      flex: 1;
+    }
+
     
-    <section id="menu">
-    <div id="item"> <img src="감자튀김.jpg">
-        <p>감자튀김</P>
-        <p>가격:</p>
+    .menu-card {
+      width: 196px;
+      height: 196px;
+      border: 1px solid #1368BD;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #FCFDFF;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding-bottom: 12px;
+    }
+
+    .menu-card img {
+      margin-top: 10px;
+      width: 55%;
+      height: 70px;
+      
+    }
+
+    .menu-info {
+      padding: 12px;
+    }
+
+    .menu-name {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .menu-price {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .sold-out {
+      color: black;
+      font-size: 20px;
+      margin-top: 5px;
+    }
+
+    .footer {
+      background-color: #f1f3f5;
+      padding: 30px 40px;
+      font-size: 14px;
+      color: #555;
+      margin-top: auto;
+    }
+
+    .footer .logo {
+      font-size: 22px;
+      color: #1368BD;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .footer .info,
+    .footer .team {
+      color: #1368BD;
+      text-align: left;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    p{color: #1368BD 
+    ; font-weight: 700;}
+
+  </style>
+</head>
+
+  <!-- 네비게이션 -->
+ <div class="top-nav">
+   <div class="logo"><img src="logo_BLUE.svg" alt=""></div>
+  <div class="category-boxes">
+    <div class="category" id="blue"><a href="restaurant.html"># 식당</a></div>
+    <div class="category" id="nonblue"><a href="cafe.html"># 카페</a></div>
+    <div class="category" id="nonblue"><a href="convenience.html"># 매점 · 편의점</a></div>
+  </div>
+</div>
+  <!-- 식당 탭 -->
+ <nav>
+    <a href="cafeteria.html">학생식당</a>
+    <a href="moms-kitchen.html">맘스키친</a>
+    <a href="handong-lounge.html">라운지</a>
+    <a href="gracetable.html"class="active">그레이스 더 테이블</a>
+    <a href="myung-sung.html" >명성</a>
+    <a href="burger-king.html">버거킹</a>
+    <a href="salad.html">샐러디</a>
+  </nav>
+<body>
+      <h5>영업시간= 주중-11:00~19:30/토 11:00~14:30</h5>
+    <div class="menu-container">
+    <div class="menu-card">
+      <img src="감자튀김.jpg">
+         <div class="menu-name">감자튀김</div>
+        <div class="menu-price">4,000원</div>
          <button onclick="toggleSoldOut('ffries-status')">완판 처리</button>
       <div id="ffries-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="꼬막비빔밥.jpg">
-        <p>꼬막비빔밥</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="꼬막비빔밥.jpg">
+       <div class="menu-name">꼬막비빔밥</div>
+        <div class="menu-price">9,900원</div>
         <button onclick="toggleSoldOut('kkbibim-status')">완판 처리</button>
       <div id="kkbibim-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="닭가슴살 셀러드.jpg">
-        <p>닭가슴살 셀러드</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="닭가슴살 셀러드.jpg">
+      <div class="menu-name">닭가슴살 셀러드</div>
+        <div class="menu-price">7,900원</div>
         <button onclick="toggleSoldOut('chsalad-status')">완판 처리</button>
       <div id="chsalad-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="더블치즈버거.jpg">
-        <p>더블치츠버거</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="더블치즈버거.jpg">
+      <div class="menu-name">더블치츠버거</div>
+        <div class="menu-price">9,900원</div>
         <button onclick="toggleSoldOut('doublecheese-status')">완판 처리</button>
       <div id="doublecheese-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="베이컨 크림 파스타.jpg">
-        <p>베이컨 크림 파스타</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="베이컨 크림 파스타.jpg">
+        <div class="menu-name">베이컨 크림 파스타</div>
+        <div class="menu-price">9,900원</div>
         <button onclick="toggleSoldOut('bacon-status')">완판 처리</button>
       <div id="bacon-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="세우오일 파스타.jpg">
-        <p>세우오일 파스타</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="세우오일 파스타.jpg">
+        <div class="menu-name">세우오일 파스타</div>
+        <div class="menu-price">9,900원</div>
         <button onclick="toggleSoldOut('soilpasta-status')">완판 처리</button>
       <div id="soilpasta-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="쇠고기 비빔밥.jpg">
-        <p>쇠고기 비빔밥</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="쇠고기 비빔밥.jpg">
+        <div class="menu-name">쇠고기 비빔밥</div>
+        <div class="menu-price">9,900원</div>
         <button onclick="toggleSoldOut('bbibim-status')">완판 처리</button>
       <div id="bbibim-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
-    </div id="item">
-      <div id="item"> <img src="에그 베네딕트.jpg">
-        <p>에그 베네딕트</p>
-        <p>가격:</p>
+    </div>
+    <div class="menu-card"> 
+      <img src="에그 베네딕트.jpg">
+        <div class="menu-name">에그 베네딕트</div>
+        <div class="menu-price">11,900원</div>
         <button onclick="toggleSoldOut('egg-status')">완판 처리</button>
       <div id="egg-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    <div id="item"> <img src="찹스테이크 덮밥.jpg">
-        <p>찹스테이크 덮밥</p>
-        <p>가격:</p>
+    <div class="menu-card">
+      <img src="찹스테이크 덮밥.jpg">
+        <div class="menu-name">찹스테이크 덮밥</div>
+        <div class="menu-price">11,900원</div>
         <button onclick="toggleSoldOut('chopsteak-status')">완판 처리</button>
       <div id="chopsteak-status" class="sold-out" style="display: none;font-size: 20px;">✅ 완판되었습니다</div>
     </div>
-    </section>
+    </div>
+    </div>
         <footer style="background-color: #F2F4F7; color: #1368BD; height: 300px; width: 100%; margin: 0 ; padding-right: 0;;">
             <img src="logo_BLUE.svg" alt="HANDONG EATS" style="position: relative; width: 280px; top: 68px; left: 80px;">
             <p style=" font-size: 18px; position: relative; top: 120px; margin-left: 80px;">2025-Summer 프론트엔드 입문</p>
@@ -143,5 +289,5 @@
       }
     }
   </script>
-    </Body>
+    </body>
 </html>
