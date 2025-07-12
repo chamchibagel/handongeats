@@ -211,20 +211,18 @@
 <div class="menu-container">
     <div class="menu-card">
       <p>든든한동</p>
-         <div data-id="cafmenu1name"class="menu-long">LUNCH-밥,유부무국,돼지고기피망볶음,어묵볶음,그린샐러드,김치</p>
-       <img src="lunch.png">
+         <div data-id="cafmenu1name"class="menu-long">LUNCH-밥,유부무국,돼지고기피망볶음,어묵볶음,그린샐러드,김치</div>
+       <div><img src="lunch.png"></div>
          <div data-id="cafmenu1price" class="menu-price">4,500원</div>
         <div data-id="cafmenu1stock" class="sold-out">재고있음</div>
         </div>
-        </div>
     <div class="menu-card">
       <p>든든한동</p>
-         <div data-id="cafmenu2name" class="menu-long">DINNER-밥,콩나물국,순대볶음,알감자조림,양파오이생채,김치</p>
-        <img src="dinner.png">
+         <div data-id="cafmenu2name" class="menu-long">DINNER-밥,콩나물국,순대볶음,알감자조림,양파오이생채,김치</div>
+        <div><img src="dinner.png"></div>
           <div data-id="cafmenu2price" class="menu-price">4,500원</div>
       <div data-id="cafmenu2stock" class="sold-out">재고있음</div>
         </div>
-    </div>
   <div class="menu-card">
       <p>hplate</p>
          <div data-id="cafmenu3name" class="menu-name">-운영없음-</p>
@@ -281,50 +279,11 @@
         <div style="text-align:center; margin-top:20px;">
   <button onclick="showPasswordPrompt()">[수정]</button>
 </div>
-<script>
-  function showPasswordPrompt() {
-    const input = prompt("비밀번호를 입력하세요:");
-    if (input === "handongeats") {
-      enableEditing();
-    } else {
-      alert("비밀번호가 틀렸습니다.");
-    }
-  }
-
-  function enableEditing() {
-    // 모든 div 안 텍스트를 contenteditable하게 바꾸기
-    const divs = document.querySelectorAll('div');
-    divs.forEach(div => {
-      div.setAttribute('contenteditable', true);
-      div.style.border = "1px dashed #aaa";  // 시각적으로 수정 모드 표시
-    });
-
-    // 저장 버튼 추가
-    const saveBtn = document.createElement("button");
-    saveBtn.innerText = "저장";
-    saveBtn.onclick = saveChanges;
-    document.body.appendChild(saveBtn);
-  }
-
-  function saveChanges() {
-    const divs = document.querySelectorAll('div');
-    divs.forEach(div => {
-      div.removeAttribute('contenteditable');
-      div.style.border = "none";
-    });
-
-    alert("수정이 완료되었습니다!");
-  }
-</script>
+<!-- Firebase SDK 모듈 -->
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { getFirestore, doc, setDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyCipTycWYVAjfDRdJdKgeoowflQ6FA-DEs",
     authDomain: "handongeats-12997.firebaseapp.com",
@@ -335,35 +294,59 @@
     measurementId: "G-0S920TWRK8"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-<script>
-  window.addEventListener("DOMContentLoaded", async () => {
-    const snapshot = await db.collection("menus").get();
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const el = document.querySelector(`[data-id="${doc.id}"]`);
-      if (el) {
-        el.textContent = data.value;
-      }
-    });
-  });
-</script>
-<script>
-function saveChanges() {
-    const editableElems = document.querySelectorAll("[data-id]");
-    editableElems.forEach(async (elem) => {
-      const id = elem.getAttribute("data-id");
-      const value = elem.textContent;
-      await db.collection("menus").doc(id).set({ value });
-      elem.removeAttribute("contenteditable");
-      elem.style.border = "none";
-    });
+  const db = getFirestore(app);  // ✅ db 정의
 
-    alert("Firebase에 저장되었습니다!");
+  // ✅ 수정 모드 진입
+  window.showPasswordPrompt = function () {
+    const input = prompt("비밀번호를 입력하세요:");
+    if (input === "handongeats") {
+      enableEditing();
+    } else {
+      alert("비밀번호가 틀렸습니다.");
+    }
   }
-  </script>
+
+  function enableEditing() {
+  const editableElems = document.querySelectorAll("[data-id]");
+  editableElems.forEach(elem => {
+    elem.setAttribute("contenteditable", true);
+    elem.style.border = "1px dashed #aaa";
+  });
+
+  // ✅ 저장 버튼이 없을 때만 추가
+  if (!document.getElementById("save-button")) {
+    const saveBtn = document.createElement("button");
+    saveBtn.id = "save-button";
+    saveBtn.textContent = "저장";
+    saveBtn.style.margin = "20px";
+    saveBtn.onclick = saveChanges;
+    document.body.appendChild(saveBtn);
+  }
+}
+
+  // ✅ 저장 기능 (Firebase Firestore에 저장)
+  async function saveChanges() {
+  const editableElems = document.querySelectorAll("[data-id]");
+  for (const elem of editableElems) {
+    const id = elem.getAttribute("data-id");
+    const value = elem.innerHTML;  // ✅ innerHTML로 저장
+    await setDoc(doc(db, "menus", id), { value });
+    elem.removeAttribute("contenteditable");
+    elem.style.border = "none";
+  }
+  alert("Firebase에 저장되었습니다!");
+}
+
+ window.addEventListener("DOMContentLoaded", async () => {
+  const querySnapshot = await getDocs(collection(db, "menus"));
+  querySnapshot.forEach(docSnap => {
+    const el = document.querySelector(`[data-id="${docSnap.id}"]`);
+    if (el) {
+      el.innerHTML = docSnap.data().value;  // ✅ innerHTML로 불러오기
+    }
+  });
+});
+</script>
 </body>
 </html>
