@@ -123,7 +123,26 @@
       color: white;
     }
   </style>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCtndOk6P4J9r37qil6wqHGaLiEeTzEU6E",
+  authDomain: "handong-eats.firebaseapp.com",
+  databaseURL: "https://handong-eats-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "handong-eats",
+  storageBucket: "handong-eats.firebasestorage.app",
+  messagingSenderId: "418250431277",
+  appId: "1:418250431277:web:0a8215e6118788ca1591a4"
+};
+firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
+  
 </head>
+  
 <body>
 <header>
   <div class="header">
@@ -176,6 +195,34 @@
 </div>
 
 <script>
+
+
+  function toggleSoldOut(id) {
+    const status = document.getElementById(id);
+    const isSoldOut = status.style.display === "none";
+    status.style.display = isSoldOut ? "block" : "none";
+
+    // ✅ Firebase에 상태 저장
+    firebase.database().ref("soldout/" + id).set(isSoldOut);
+  }
+
+  // ✅ 페이지 로딩 시 Firebase에서 상태 불러오기
+  window.onload = function() {
+    const ref = firebase.database().ref("soldout");
+    ref.once("value", (snapshot) => {
+      const soldOutData = snapshot.val();
+      if (soldOutData) {
+        for (const id in soldOutData) {
+          const isSoldOut = soldOutData[id];
+          const status = document.getElementById(id);
+          if (status) {
+            status.style.display = isSoldOut ? "block" : "none";
+          }
+        }
+      }
+    });
+  };
+
   function loadCafe(cafeName, btn) {
     const container = document.getElementById("menu-container");
     container.innerHTML = '';
