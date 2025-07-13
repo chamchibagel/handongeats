@@ -179,6 +179,24 @@
     }
 
   </style>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCtndOk6P4J9r37qil6wqHGaLiEeTzEU6E",
+  authDomain: "handong-eats.firebaseapp.com",
+  databaseURL: "https://handong-eats-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "handong-eats",
+  storageBucket: "handong-eats.firebasestorage.app",
+  messagingSenderId: "418250431277",
+  appId: "1:418250431277:web:0a8215e6118788ca1591a4"
+};
+firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
+  
 </head>
 <body>
 
